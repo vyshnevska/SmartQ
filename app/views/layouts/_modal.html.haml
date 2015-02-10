@@ -1,0 +1,14 @@
+#modal-default.modal.fade{ aria: { hidden: true,  labelledby: 'model-label' }, role: 'dialog', tabindex: -1}
+  .modal-dialog
+    .modal-content#modal-content
+
+#delete-confirmation-dialog.modal.fade{ aria: { hidden: true }, role: 'dialog', tabindex: -1 }
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h4.modal-title= I18n.t('modal.delete')
+      .modal-body
+        %h4
+      .modal-footer
+        %button.btn.btn-default{ :data => { :dismiss => 'modal' }, :type => 'button' }= I18n.t('modal.cancel')
+        %button#delete-button.btn.btn-red.btn-primary.confirm{ :type => 'button' }= I18n.t('modal.delete')

@@ -1,0 +1,7 @@
+- flash.each do | type, msg |
+  .notification-wrapper{ :class => "notification-#{type}" }
+    .alert{ :role => 'alert', :class => "alert-#{type}" }
+      = notifications flash, type
+      %button.close{ :data => { :dismiss => 'alert', :target => ".notification-#{type}" }, :type => 'button' }
+        %span{ :aria => { :hidden => 'true' } } ×
+        %span.sr-only= I18n.t('modal.close')

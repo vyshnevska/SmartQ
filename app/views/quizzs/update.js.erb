@@ -1,0 +1,10 @@
+<% if @valid %>
+  $('#modal-default').modal('hide');
+  $('#modal-default #modal-content').html('');
+  $('#alert-notifications').html("<%= escape_javascript(render partial: 'layouts/notifications') %>");
+  $("#table").replaceWith("<%= escape_javascript(render :partial => 'quizzs/shared/quizzes') %>");
+  //TODO: Can't update single row
+  // $("#quizz-line-#{@quizz.id}").replaceWith("<%= escape_javascript(render :partial => 'quizzs/shared/quizz', :locals => { quizz: @quizz }) %>");
+<% else %>
+  $('#modal-default #modal-content').html("<%= escape_javascript(render :partial => 'quizzs/shared/edit') %>");
+<% end %>

@@ -1,0 +1,32 @@
+!!!
+%html{ :lang => 'en'}
+  %head
+    %meta{ :charset => 'utf-8'}
+    %meta{ :content => 'IE=edge', :http => { equiv: 'X-UA-Compatible' } }
+    %title= I18n.t('general.app_name')
+
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tag
+
+  %body
+    = render :partial => 'layouts/header'
+    %content#main-content
+      #alert-notifications
+        - if flash.any?
+          = render :partial => 'layouts/notifications'
+      .container-fluid
+        - if user_signed_in?
+          - if current_user.admin?
+            = link_to I18n.t('views.nav.users_count', :count => User.count), users_path
+        = yield
+
+    = render :partial => 'layouts/modal'
+    .purple-top
+    %footer
+      .container
+        .row
+          .col-lg-12.footer-below.center-align
+            %p
+              = I18n.t('general.footer.title')
+    .purple-btn

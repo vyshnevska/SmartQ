@@ -1,0 +1,5 @@
+<% if @invalid %>
+  $('#alert-notifications').html("<%= escape_javascript(render :partial => 'layouts/notifications') %>");
+<% else %>
+  $('#categories').prepend("<%= escape_javascript(render :partial => 'categories/new', :locals => { category: @category, index: -1 }) %>");
+<% end %>

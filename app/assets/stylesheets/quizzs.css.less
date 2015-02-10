@@ -1,0 +1,74 @@
+// Place all the styles related to the quizzs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Sections */
+.panel {
+  width: 80%;
+}
+.panel-purple { border-color: #754C78; }
+.panel-purple > .panel-heading {
+  background-color: #CDB5CD;//light purple
+  border-color: #754C78;
+  color: #4F2F4F; //dark purple
+}
+
+.bs-callout {
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px;
+}
+.bs-callout-danger-purple {
+  border-left-color: #CDB5CD;
+}
+.bs-callout-sm-inner{
+  padding: 10px 0 10px 10px;
+  margin-left: 20px;
+}
+.bs-callout-both-purple{
+  margin: 0;
+  border-left-color: #CDB5CD;
+  border-right-color: #CDB5CD;
+  border-right-width: 5px;
+}
+
+.actions { height: 30px;
+  .btn-info-purple {
+    color: #fff; //dark purple
+    background-color: #8B7B8B;
+  }
+ }
+
+ .fields { padding: 10px 0 0 0; }
+
+/* Resizable Modal Content */
+.resizable-content {
+  width: 100%;
+  min-height: 150px;
+  max-height: 300px;
+  overflow: auto;
+  overflow-y: auto;
+  overflow-x: none;
+}
+
+#advice-notifications {
+  padding: 5px;
+}
+
+/* Quizzes */
+.section {
+  min-height: 20px;
+  line-height: 20px;
+}
+.right-side { 
+  text-align: right;
+}
+.text-bold {
+  font-weight: bold;
+}
+.radio input[type="checkbox"] {
+  position: absolute !important;
+  margin-left: -20px!important;
+}

@@ -1,0 +1,23 @@
+.modal-header
+  %button.close{ :data => { :dismiss => 'modal' }, :type => 'button' }
+    %span{ :aria => { :hidden => 'true'} } ×
+    %span.sr-only= I18n.t('modal.close')
+  %h4#modal-title.modal-title= I18n.t('views.quizzes.form.add_question', :quizz => @quizz.id)
+
+= nested_form_for @question, :url => save_question_quizz_path(@quizz), :remote => true, :html => { :class => 'form-horizontal', :novalidate => '' } do |q|
+  .modal-body.resizable-content
+    .bs-callout.bs-callout-danger-purple.bs-callout-sm-inner
+      %label.col-sm-3.control-label= I18n.t('views.quizzes.form.question')
+      .form-group
+        .col-sm-8
+          = q.text_field :title, { :size => '50', :maxlength => '100', :name => "quizz[questions][title]" }
+      .margin-sm-top
+        = q.fields_for :answers do |a|
+          .radio
+            %label.col-sm-4.control-label= build_form_index(a.options[:child_index])
+            .form-group
+              .col-sm-4
+                = a.text_field :title, { :size => '50', :maxlength => '100', :name => "quizz[answers][#{a.object.id}][title]" }
+  .modal-footer
+    %button.btn.btn-default{data: { dismiss: 'modal' }, type: 'button'}= I18n.t('modal.cancel')
+    = q.submit I18n.t('modal.update'), id: 'add_new_quizz', class: 'button btn'

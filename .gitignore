@@ -1,0 +1,34 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+# Ignore configs
+config/database.yml
+config/mail.yml
+
+# Ignore assets in public folder
+/public/assets
+/public/assets/*
+
+#Ignore system images
+/public/system
+/public/system/*
+
+# Tests coverage
+/coverage
+/coverage/*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Ignore RubyMine .idea folder
+/.idea
+*.DS_Store

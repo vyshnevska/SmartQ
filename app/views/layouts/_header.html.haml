@@ -1,0 +1,14 @@
+/ Navigation
+%nav{ :class => "navbar navbar-inverse navbar-fixed-top", :role => "navigation" }
+  .container
+    .navbar-header
+      %button{ :type => "button", :class => "navbar-toggle", 'data-toggle' => "collapse", 'data-target' => "#bs-example-navbar-collapse-1"}
+        %span{ :class => "sr-only" }= "toggle navigation"
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+                
+      %a{ :class => "navbar-brand", :href => root_path}= I18n.t('general.header.nav')
+    = render :partial => 'layouts/menu'
+
+%header{ :class => "image-bg-city-height" }

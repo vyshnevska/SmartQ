@@ -1,0 +1,8 @@
+<% if @valid %>
+  $('#modal-default').modal('hide');
+  $('#modal-default #modal-content').html('');
+  $('#alert-notifications').html("<%= escape_javascript(render :partial => 'layouts/notifications') %>");
+  $('#quizzes_list').prepend("<%= escape_javascript(render :partial => 'quizzs/shared/quizz', :locals => { quizz: @quizz }) %>");
+<% else %>
+  $('#modal-content').html("<%= escape_javascript(render :partial => 'quizzs/shared/new') %>");
+<% end %>

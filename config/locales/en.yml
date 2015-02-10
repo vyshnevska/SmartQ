@@ -1,0 +1,73 @@
+en:
+  general:
+    app_name: 'SmartQ'
+    header:
+      nav: 'Hamster'
+    footer:
+      title: 'Hamster App'
+    none: 'None'
+    actions: 'Actions'
+    destroy: 'Destroy'
+    new: 'New'
+  modal:
+    new: 'New'
+    create: 'Create'
+    edit: 'Edit'
+    update: 'Update'
+    delete: 'Delete'
+    cancel: 'Cancel'
+    close: 'Close'
+  controllers:
+    quizzes:
+      created: 'Quizz %{quizz} was successfully created'
+      updated: 'Quizz %{quizz} was successfully updated'
+      completed: 'Quizz %{quizz} was successfully completed'
+      not_completed: 'Quizz %{quizz} cannot be completed. Please add some questions'
+      destroyed: 'Quizz %{quizz} was successfully destroyed'
+      not_destroyed: "Quizz %{quizz} wasn't destroyed"
+    categories:
+      destroyed: 'Category %{category} was successfully destroyed'
+      not_destroyed: "Category %{category} wasn't destroyed"
+  models:
+    categories:
+      one_blank_category: 'You can not create new category if you have another unfilled one'
+      unique_title: 'Title must be unique'
+      no_column: 'Unlnown column. Can not update!'
+  views:
+    nav:
+      categories: 'Categories'
+      edit_profile: 'Edit account'
+      logout: 'Sign out'
+      sign_in: 'Sign in'
+      sign_up: 'Sign up'
+      users: 'Users'
+      users_count: 'Users: %{count}'
+    quizzes:
+      table:
+        caption: 'Quizzes'
+        header:
+          td1: 'Quizz'
+          td2: '# Questions'
+          td3: 'Status'
+        actions:
+          edit: 'Edit'
+          destroy: 'Delete'
+          complete: 'Complete'
+          add_question: 'Add question'
+          procede: 'Procede'
+          new: 'New'
+      warning_box:
+        no_quizz: 'No available quizzes'
+        details: 'Create some new quizzes'
+        mark_answers: 'Please mark correct answers (only 1 can be chosen)'
+      form:
+        title: 'Title'
+        category: 'Category'
+        one_level: 'Fixed quizz category'
+        multiple_level: 'Multiple category sections'
+        add_question: "Update quizz #%{quizz}"
+        confirm: 'Are you sure?'
+        question: 'Question'
+    categories:
+      details: 'Details'
+      category: 'Category'
