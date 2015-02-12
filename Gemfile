@@ -15,8 +15,10 @@ gem 'nested_form'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'haml-rails'
 gem 'haml'
-gem "therubyracer"
-gem "less-rails"
+gem 'sass-rails', '~> 4.0.3'
+gem 'sass'
+# gem "therubyracer"
+# gem "less-rails"
 
 gem 'bootstrap-datepicker-rails'
 gem 'twitter-bootstrap-rails', '2.1.7'
@@ -33,8 +35,17 @@ group :development, :test do
   gem 'rspec-activemodel-mocks'
 
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', require: false
+  gem 'rspec-collection_matchers'
 
   gem 'quiet_assets'
-  gem 'shoulda-matchers', require: false
+
   gem 'bullet'
+end
+group :test do
+  # gem 'faker'
+  gem 'ffaker'
+  gem 'capybara-webkit'
 end

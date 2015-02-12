@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :category do
-    title "MyString"
-description "MyString"
+    title       { Faker::Lorem.word }
+    description { Faker::Lorem.sentence }
   end
 
 end

@@ -26,27 +26,31 @@ ActiveRecord::Schema.define(version: 20150202192442) do
   create_table "categories", force: true do |t|
     t.string   "title"
     t.string   "description"
-    t.integer   "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "questions", force: true do |t|
-    t.string   "title",      limit: 200
+    t.string   "title",       limit: 200
     t.integer  "quizz_id"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "questions", ["category_id"], name: "index_questions_on_category_id", using: :btree
   add_index "questions", ["quizz_id"], name: "index_questions_on_quizz_id", using: :btree
 
   create_table "quizzs", force: true do |t|
-    t.integer   "category_id"
+    t.string   "title",       limit: 50
+    t.integer  "category_id"
+    t.string   "state"
+    t.text     "options"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title",      limit: 50
-    t.string   "state",      limit: 11
   end
+
+  add_index "quizzs", ["category_id"], name: "index_quizzs_on_category_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
