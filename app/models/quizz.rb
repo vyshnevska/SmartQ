@@ -1,7 +1,11 @@
 class Quizz < ActiveRecord::Base
   include AASM
-  has_many :questions
-  belongs_to :categories
+  include LogHistory
+
+  before_destroy :log_to_history
+
+  has_many :questions, :dependent => :destroy
+  belongs_to :category
   serialize :options, Hash
   accepts_nested_attributes_for :questions, :allow_destroy => :true
 
@@ -17,11 +21,6 @@ class Quizz < ActiveRecord::Base
   aasm_event :set_to_completed do
     transitions from: :draft, to: :published
   end
-
-  # scope :draft,      where( status: 'draft'     )
-  # scope :published,  where( status: 'published' )
-  # scope :alphabetically, order("description ASC")
-  # scope :by_state, order("status, updated_at ASC")
 
   def all_marked?
     self.questions.all?{|question| question.any_marked?}
