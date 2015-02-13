@@ -1,7 +1,10 @@
 class Question < ActiveRecord::Base
-  has_many :answers
+  include LogHistory
+  before_destroy :log_to_history
+
+  has_many :answers, :dependent => :destroy
   belongs_to :quizz
-  belongs_to :categories
+  belongs_to :category
 
   accepts_nested_attributes_for :answers, :allow_destroy => :true
 

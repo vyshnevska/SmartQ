@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150202192442) do
+ActiveRecord::Schema.define(version: 20150213141321) do
 
   create_table "answers", force: true do |t|
     t.string   "title",       limit: 200
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20150202192442) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "logs", force: true do |t|
+    t.string   "table_name"
+    t.string   "action"
+    t.integer  "deleted_id"
+    t.text     "content"
+    t.datetime "deleted_at"
+    t.integer  "deleted_by"
   end
 
   create_table "questions", force: true do |t|

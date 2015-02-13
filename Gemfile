@@ -25,6 +25,7 @@ gem 'twitter-bootstrap-rails', '2.1.7'
 
 gem 'aasm', '3.3.3'
 gem 'will_paginate'
+gem 'hairtrigger'
 
 group :development, :test do
   gem 'pry'
@@ -40,12 +41,15 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'rspec-collection_matchers'
 
+  gem 'shoulda-matchers', require: false
+  gem 'rspec-collection_matchers'
+
   gem 'quiet_assets'
 
   gem 'bullet'
 end
+
 group :test do
-  # gem 'faker'
   gem 'ffaker'
   gem 'capybara-webkit'
 end
