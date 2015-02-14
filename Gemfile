@@ -41,9 +41,6 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'rspec-collection_matchers'
 
-  gem 'shoulda-matchers', require: false
-  gem 'rspec-collection_matchers'
-
   gem 'quiet_assets'
 
   gem 'bullet'
