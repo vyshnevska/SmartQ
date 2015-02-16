@@ -101,7 +101,7 @@ class QuizzsController < ApplicationController
     end
 
     def category_params
-      params.require(:category).permit(:options)
+      params[:category] ? params.require(:category).permit(:options) : {}
     end
 
     def question_params

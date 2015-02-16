@@ -1,6 +1,7 @@
 <% if @valid %>
   $('#modal-default').modal('hide');
   $('#modal-default #modal-content').html('');
+  $('#quizzes_list').find('.bs-callout.bs-callout-danger-purple').html('');
   $('#alert-notifications').html("<%= escape_javascript(render :partial => 'layouts/notifications') %>");
   $('#quizzes_list').prepend("<%= escape_javascript(render :partial => 'quizzs/shared/quizz', :locals => { quizz: @quizz }) %>");
 <% else %>
