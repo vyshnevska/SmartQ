@@ -14,8 +14,9 @@
           = render :partial => 'quizzs/shared/quizz', :locals => { quizz: quizz }
       - else
         %tr.bs-callout.bs-callout-danger-purple
-          %h4= I18n.t('views.quizzes.warning_box.no_quizz')
-          %p= I18n.t('views.quizzes.warning_box.details')
+          %td{ :collspan => 5 }
+            %h4= I18n.t('views.quizzes.warning_box.no_quizz')
+            %p= I18n.t('views.quizzes.warning_box.details')
 
   .row
     .col-sm-4.big-font

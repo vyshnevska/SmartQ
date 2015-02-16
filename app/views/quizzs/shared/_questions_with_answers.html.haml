@@ -1,0 +1,14 @@
+= f.fields_for :questions do |q|
+  .bs-callout.bs-callout-danger-purple.bs-callout-sm-inner
+    %label.col-sm-3.control-label= build_form_index(q, I18n.t('views.quizzes.form.question'))
+    .form-group
+      .col-sm-8
+        = q.text_field :title, :size => '50', :maxlength => '100'
+    .margin-sm-top
+      = q.fields_for :answers do |a|
+        .radio
+          %label.col-sm-3.control-label= build_form_index(a)
+          .form-group
+            .col-sm-4
+              = a.check_box_button :correct, "answer_#{a.object.id}", :checked => false
+              = a.text_field :title, :size => '50', :maxlength => '100'

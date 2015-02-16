@@ -5,41 +5,13 @@
     .col-sm-8
       = f.text_field :title, :size => '50', :maxlength => '100'
       = f.error :title
-  - section = 'quizz'
-  .section
-    .col-sm-3.right-side
-      = check_box_tag "category_level[one]", 'quizz', render_category_level?(@quizz, section), :name => 'category[options]'
-    .col-sm-6.text-bold
-      = I18n.t('views.quizzes.form.one_level')
-    .quizz-level-section
-      %label.noselect.col-sm-5.control-label{for: 'category'}= I18n.t('views.quizzes.form.category')
-      .form-group
-        .col-sm-4
-          = f.input :category_id, collection: Category.all, required: true, autocomplete: 'off', include_blank: true, label: false, input_html: { class: 'form-control' }
-          = f.error :category
 
-  - section = 'multiple'
-  .section
-    .col-sm-3.right-side
-      = check_box_tag "category_level[multiple]]", 'multiple', render_category_level?(@quizz, section), :name => 'category[options]'
-    .col-sm-6.text-bold
-      = I18n.t('views.quizzes.form.multiple_level')
-
+  / Build categories if any
+  - if Category.any?
+    = render :partial => 'categories', :locals => { :f => f }
+  / Build questions with answers if any
   - if @quizz.questions.any?
-    = f.fields_for :questions do |q|
-      .bs-callout.bs-callout-danger-purple.bs-callout-sm-inner
-        %label.col-sm-3.control-label= build_form_index(q, I18n.t('views.quizzes.form.question'))
-        .form-group
-          .col-sm-8
-            = q.text_field :title, :size => '50', :maxlength => '100'
-        .margin-sm-top
-          = q.fields_for :answers do |a|
-            .radio
-              %label.col-sm-3.control-label= build_form_index(a)
-              .form-group
-                .col-sm-4
-                  = a.check_box_button :correct, "answer_#{a.object.id}", :checked => false
-                  = a.text_field :title, :size => '50', :maxlength => '100'
+    = render :partial => 'questions_with_answers', :locals => { :f => f }
     
 .modal-footer
   %button.btn.btn-default{data: { dismiss: 'modal' }, type: 'button'}= I18n.t('modal.cancel')
