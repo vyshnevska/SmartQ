@@ -16,4 +16,28 @@ class ApplicationController < ActionController::Base
   def redirect_to_root(msg, type)
     redirect_to root_path, type.to_sym => msg
   end
+
+  #TODO: Rework for ajax
+  def admin_action?
+    redirect_to root_path unless current_user.try(:admin?)
+  end
+
+  protected
+    def after_sign_in_path_for(resource)
+      signed_in_root_path(resource)
+    end
+
+    def after_sign_up_path_for(resource)
+      signed_in_root_path(resource)
+    end
+
+  private
+    def signed_in_root_path(resource)
+      case resource.role
+      when 'admin'
+        admin_root_path
+      else
+        root_path
+      end
+    end
 end

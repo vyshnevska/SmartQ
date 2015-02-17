@@ -5,4 +5,8 @@ FactoryGirl.define do
     name      'user'
   end
 
+  factory :admin_user, :parent => :user do
+    role       2
+  end
+
 end

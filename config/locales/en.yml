@@ -28,11 +28,12 @@ en:
     categories:
       destroyed: 'Category %{category} was successfully destroyed'
       not_destroyed: "Category %{category} wasn't destroyed"
+      restrict_user: 'You are not an admin'
   models:
     categories:
       one_blank_category: 'You can not create new category if you have another unfilled one'
       unique_title: 'Title must be unique'
-      no_column: 'Unlnown column. Can not update!'
+      unknown_column: 'Unlnown column. Can not update!'
   views:
     nav:
       categories: 'Categories'
@@ -47,8 +48,8 @@ en:
         caption: 'Quizzes'
         header:
           td1: 'Quizz'
-          td2: '# Questions'
-          td3: 'Status'
+          td2: 'Status'
+          td3: '# Questions'
         actions:
           edit: 'Edit'
           destroy: 'Delete'

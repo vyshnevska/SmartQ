@@ -6,7 +6,6 @@
         %th= I18n.t('views.quizzes.table.header.td1')
         %th= I18n.t('views.quizzes.table.header.td2')
         %th= I18n.t('views.quizzes.table.header.td3')
-        %th= I18n.t('general.actions')
 
     %tbody#quizzes_list
       - if @quizzes.any?
@@ -19,7 +18,5 @@
             %p= I18n.t('views.quizzes.warning_box.details')
 
   .row
-    .col-sm-4.big-font
-      = link_to I18n.t('views.quizzes.table.actions.new'), new_quizz_path, { :remote => true, :data => { :target => '#modal-default', :toggle => 'modal' }, :class => 'btn btn-info-purple pull-left' }
     .col-sm-4.big-font
       = will_paginate @quizzes

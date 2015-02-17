@@ -1,5 +1,0 @@
-%tr{:class => (index+1).odd? ? 'odd' : '', 'data-url' => category_path(category)}
-  %td= index + 1
-  %td{'data-column' => "title", :contenteditable => "true"}= build_title(category)
-  %td{'data-column' =>  "description", :contenteditable => "true"}= build_description(category)
-  %td= link_to I18n.t('general.destroy'), category, { :method => :delete, :data => { :confirm => I18n.translate('views.quizzes.form.confirm') } }

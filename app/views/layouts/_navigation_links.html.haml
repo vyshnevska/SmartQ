@@ -1,7 +1,7 @@
 - if user_signed_in?
   %li= link_to I18n.t('views.nav.edit_profile'), edit_user_registration_path
   %li= link_to I18n.t('views.nav.logout'), destroy_user_session_path, :method=>'delete'
-  %li= link_to I18n.t('views.nav.categories'), categories_path
+  %li= link_to I18n.t('views.nav.categories'), admin_categories_path
 - else
   %li= link_to I18n.t('views.nav.sign_in'), new_user_session_path
   %li= link_to I18n.t('views.nav.sign_up'), new_user_registration_path

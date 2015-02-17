@@ -4,7 +4,7 @@
     %span.sr-only= I18n.t('modal.close')
   %h4#modal-title.modal-title= I18n.t('views.quizzes.form.add_question', :quizz => @quizz.id)
 
-= nested_form_for @question, :url => save_question_quizz_path(@quizz), :remote => true, :html => { :class => 'form-horizontal', :novalidate => '' } do |q|
+= nested_form_for @question, :url => save_question_admin_quizz_path(@quizz), :remote => true, :html => { :class => 'form-horizontal', :novalidate => '' } do |q|
   .modal-body.resizable-content
     .bs-callout.bs-callout-danger-purple.bs-callout-sm-inner
       %label.col-sm-3.control-label= I18n.t('views.quizzes.form.question')

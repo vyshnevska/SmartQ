@@ -1,12 +1,11 @@
-= render :partial => 'layouts/notifications'
 %table.table
   %thead
     %tr
-      %th= link_to I18n.t('general.new'), new_category_path, { :remote => true }
+      %th= link_to I18n.t('general.new'), new_admin_category_path, { :remote => true }
       %th= I18n.t('views.categories.category')
       %th= I18n.t('views.categories.details')
       %th= I18n.t('general.actions')
 
   %tbody#categories
     - @categories.each_with_index do |category, index|
-      = render :partial => 'categories/category', :locals => { :category => category, :index => index }
+      = render :partial => 'admin/categories/category', :locals => { :category => category, :index => index }
