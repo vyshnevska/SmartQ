@@ -4,7 +4,7 @@
     %span.sr-only= I18n.t('modal.close')
   %h4#modal-title.modal-title= I18n.t('modal.edit')
 
-= simple_form_for @quizz, :url => quizz_path, :remote => true, :html => { :class => 'form-horizontal', :novalidate => '' } do |f|
+= simple_form_for @quizz, :url => admin_quizz_path, :remote => true, :html => { :class => 'form-horizontal', :novalidate => '' } do |f|
   .modal-body.resizable-content
     %label.col-sm-3.control-label{for: 'title'}= I18n.t('views.quizzes.form.title')
     .form-group

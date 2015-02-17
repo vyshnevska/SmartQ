@@ -1,17 +1,28 @@
 require 'rails_helper'
-# require 'pry'
 
 feature 'User signs up' do
-  scenario 'with valid credentials' do
-    visit new_user_registration_path
-
-    fill_in 'Name', with: 'joe_example'
-    fill_in 'Email', with: 'joe@example.com'
-    fill_in 'Password', with: 'passw0rd' 
-    fill_in 'Password confirmation', with: 'passw0rd' 
-    click_button 'Sign up'
+  scenario 'with valid email and password' do
+    sign_up_with 'joe_example', 'joe@example.com', 'passw0rd'
 
     expect(page).to have_content('Welcome! You have signed up successfully.')
+    expect(page.current_path).to eq(root_path)
   end
 
+  scenario 'with invalid email' do
+    sign_up_with 'joe_example', 'invalid_email', 'passw0rd'
+
+    expect(page).to have_content('Sign in')
+  end
+
+  scenario 'with blank password' do
+    sign_up_with 'joe_example', 'joe@example.com', ''
+
+    expect(page).to have_content('Sign in')
+  end
+
+  scenario 'with blank name' do
+    sign_up_with '', 'joe@example.com', 'passw0rd'
+
+    expect(page).to have_content('Sign in')
+  end
 end

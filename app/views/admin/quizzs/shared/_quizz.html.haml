@@ -1,0 +1,15 @@
+%tr{ :id => "quizz-line-#{quizz.id}" }
+  %th{ :scope => "row" }= "##{quizz.id}"
+  %td= quizz.title
+  %td= quizz.state
+  %td= quizz.questions_count
+  %td
+    - if quizz.can_edit?
+      = link_to I18n.t('views.quizzes.table.actions.edit'), edit_admin_quizz_path(quizz), { :remote => true, :data => { :target => '#modal-default', :toggle => 'modal' } }
+      = link_to I18n.t('views.quizzes.table.actions.add_question'), add_question_admin_quizz_path(quizz), { :remote => true, :data => { :target => '#modal-default', :toggle => 'modal' } }
+      - if quizz.can_complete?
+        = link_to I18n.t('views.quizzes.table.actions.complete'), complete_admin_quizz_path(quizz)
+    - else
+      = I18n.t('views.quizzes.table.actions.procede')
+    - if current_user.admin?
+      = link_to I18n.t('views.quizzes.table.actions.destroy'), admin_quizz_path(quizz), { :method => :delete, :data => { :confirm => I18n.translate('views.quizzes.form.confirm') } }
