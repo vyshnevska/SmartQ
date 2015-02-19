@@ -29,7 +29,7 @@ en:
     categories:
       destroyed: 'Category %{category} was successfully destroyed'
       not_destroyed: "Category %{category} wasn't destroyed"
-      restrict_user: 'You are not an admin'
+      restrict_user: 'Access denied. Admin is required!'
   models:
     categories:
       one_blank_category: 'You can not create new category if you have another unfilled one'

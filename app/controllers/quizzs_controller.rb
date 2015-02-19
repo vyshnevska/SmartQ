@@ -1,7 +1,5 @@
 class QuizzsController < ApplicationController
-  # TODO: Do we need?
-  # before_action :authenticate_user!
-  # before_action :set_quizzes, only: [:index]
+  before_action :set_quizzes, only: [:index, :update, :save_question]
 
   # def index
   # end

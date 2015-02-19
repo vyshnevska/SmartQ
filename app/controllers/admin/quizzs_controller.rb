@@ -1,8 +1,4 @@
-class Admin::QuizzsController < ApplicationController
-
-  before_action :authenticate_user!
-  before_action :admin_action?
-
+class Admin::QuizzsController < AdminController
   before_action :set_quizz, only: [:show, :edit, :update, :destroy, :add_question, :save_question, :complete]
   
   before_action :set_quizzes, only: [:index, :update, :save_question]
