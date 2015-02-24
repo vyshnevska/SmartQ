@@ -43,6 +43,7 @@ en:
       sign_up: 'Sign up'
       users: 'Users'
       users_count: 'Users: %{count}'
+      assessment: Assess Myself
     quizzes:
       table:
         caption: 'Quizzes'
@@ -72,3 +73,5 @@ en:
     categories:
       details: 'Details'
       category: 'Category'
+    assessments:
+      new: 'Start Assessment'

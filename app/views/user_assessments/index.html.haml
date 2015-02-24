@@ -1,0 +1,20 @@
+#table
+  %table.table.table-hover
+    %thead
+      %tr
+        %th=#
+        %th= "quizzes"
+        %th= "actions"
+
+    %tbody#available_quizzes_list
+      - if @quizzes.any?
+        - @quizzes.each do |quizz|
+          %tr{ :id => "quizz-line-#{quizz.id}" }
+            %th{ :scope => "row" }= "##{quizz.id}"
+            %td= quizz.title
+            %td= link_to I18n.t('views.assessments.new'), new_user_assessment_path(:quizz => quizz)
+      - else
+        %tr.bs-callout.bs-callout-danger-purple
+          %td{ :collspan => 5 }
+            %h4= I18n.t('views.quizzes.warning_box.no_quizz')
+            %p= I18n.t('views.quizzes.warning_box.details')

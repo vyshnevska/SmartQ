@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @user_assessment.user_id
+%p
+  %b Grade:
+  = @user_assessment.grade
+%p
+  %b Current question:
+  = @user_assessment.current_question_id
+%p
+  %b State:
+  = @user_assessment.state
+
+= link_to 'Edit', edit_user_assessment_path(@user_assessment)
+\|
+= link_to 'Back', user_assessments_path

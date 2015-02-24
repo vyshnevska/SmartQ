@@ -8,6 +8,6 @@ class QuizzsController < ApplicationController
   private
 
     def set_quizzes
-      @quizzes = Quizz.includes(:questions).order('title ASC').paginate(:page => params[:page], :per_page => 5)
+      @quizzes = Quizz.includes(:questions).paginate(:page => params[:page], :per_page => 5)
     end
 end
