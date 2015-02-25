@@ -9,6 +9,7 @@ en:
     actions: 'Actions'
     destroy: 'Destroy'
     new: 'New'
+    progress: 'Progress Bar'
   modal:
     new: 'New'
     create: 'Create'

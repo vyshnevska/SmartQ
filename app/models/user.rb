@@ -21,4 +21,9 @@ class User < ActiveRecord::Base
       Thread.current[:current_user]
     end
   end
+
+  # TODO: extend permission by sections
+  def has_permission?(section)
+    false
+  end
 end

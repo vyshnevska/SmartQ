@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20150223184429) do
     t.integer  "grade"
     t.integer  "current_question_id"
     t.integer  "state"
+    t.text     "user_answers"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

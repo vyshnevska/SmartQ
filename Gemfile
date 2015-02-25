@@ -20,8 +20,9 @@ gem 'sass'
 # gem "therubyracer"
 # gem "less-rails"
 
-gem 'bootstrap-datepicker-rails'
-gem 'twitter-bootstrap-rails', '2.1.7'
+# gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-sass', '~> 3.1.1.0'
+gem 'twitter-bootstrap-rails', '3.2'
 
 gem 'aasm', '3.3.3'
 gem 'will_paginate'

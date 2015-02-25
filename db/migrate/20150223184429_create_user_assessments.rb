@@ -6,6 +6,7 @@ class CreateUserAssessments < ActiveRecord::Migration
       t.integer :grade
       t.integer :current_question_id
       t.integer :state
+      t.text :user_answers
 
       t.timestamps
     end

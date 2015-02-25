@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :user_assessments
 
-  root 'quizzs#index'
+  root 'user_assessments#index'
 
   namespace :admin do
     root 'categories#index'

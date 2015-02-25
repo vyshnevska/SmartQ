@@ -1,17 +1,7 @@
-%p#notice= notice
+%p
+  %b= "#{@user_assessment.user.name.capitalize}, You got #{@user_assessment.grade} points"
 
-%p
-  %b User:
-  = @user_assessment.user_id
-%p
-  %b Grade:
-  = @user_assessment.grade
-%p
-  %b Current question:
-  = @user_assessment.current_question_id
-%p
-  %b State:
-  = @user_assessment.state
+= render 'user_assessment'#, :locals => { :view_mode => @view_mode }
 
 = link_to 'Edit', edit_user_assessment_path(@user_assessment)
 \|

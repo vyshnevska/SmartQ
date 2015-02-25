@@ -11,6 +11,6 @@ class Category < ActiveRecord::Base
   validate :one_blank_category, :on => :create
 
   def one_blank_category
-    errors.add(:base, I18n.t('models.categories.one_blank_category')) if Category.blan.count >= 1
+    errors.add(:base, I18n.t('models.categories.one_blank_category')) if Category.blank.count > 1
   end
 end

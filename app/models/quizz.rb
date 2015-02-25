@@ -45,4 +45,15 @@ class Quizz < ActiveRecord::Base
   def can_complete?
     can_edit? && has_questions?
   end
+
+  def category_blocks
+    case self.options['category_level']
+    when 'multiple'
+      self.questions.map{|q| q.category.title}.uniq.sort!
+    when 'one'
+      [self.category.title]
+    else
+      []
+    end
+  end
 end
