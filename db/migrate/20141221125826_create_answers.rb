@@ -4,6 +4,7 @@ class CreateAnswers < ActiveRecord::Migration
       t.string :title, limit: 200
       t.integer :question_id
       t.boolean :correct
+      t.string :explanation, limit: 200
 
       t.timestamps
     end
