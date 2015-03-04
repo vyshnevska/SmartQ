@@ -17,5 +17,5 @@
 //= require jquery-ui
 //= require_tree .
 
-//= require bootstrap-datepicker
-//= require bootstrap-datepicker/core
+// require bootstrap-datepicker
+// require bootstrap-datepicker/core

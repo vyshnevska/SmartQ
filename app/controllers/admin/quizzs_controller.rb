@@ -60,12 +60,8 @@ class Admin::QuizzsController < ApplicationController
   end
 
   def save_question
-    if quizz_data_params[:questions]
-      question =  @quizz.questions.new(quizz_data_params[:questions])
-      create_answers(quizz_data_params, question) 
-      @valid = question.save
-    end
-    flash.now[:notice] = I18n.t('controllers.quizzes.updated', :quizz => @quizz.id) if @valid
+    question =  @quizz.questions.new(quizz_data_params)
+    flash.now[:notice] = I18n.t('controllers.quizzes.updated', :quizz => @quizz.id) if @valid = question.save
     render 'update.js.erb'
   end
 
@@ -107,10 +103,11 @@ class Admin::QuizzsController < ApplicationController
     end
 
     def question_params
-      params.require(:quizz).permit(:title, :category_id, :questions => [ :id, :title, :answers_attributes => [:id, :title, :correct]])
+      params.require(:question).permit(:title, :category_id, :questions => [ :id, :title, :answers_attributes => [:id, :title, :correct]])
     end
 
     def quizz_data_params
-      params.require(:quizz).permit(:questions => [:title], :answers => [:title, :correct] )
+      # params.require(:quizz).permit(:questions => [:title], :answers => [:title, :correct] )
+      params.require(:question).permit(:title, :category_id, :answers_attributes => [:id, :title, :correct])
     end
 end

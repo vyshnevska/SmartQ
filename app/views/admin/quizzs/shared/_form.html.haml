@@ -7,7 +7,7 @@
       = f.error :title
 
   / Build categories if any
-  - if Category.any?
+  - if Category.filled.any?
     = render :partial => 'admin/quizzs/shared/categories', :locals => { :f => f }
 
   / Build questions with answers if any

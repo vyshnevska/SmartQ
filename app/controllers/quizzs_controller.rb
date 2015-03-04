@@ -1,13 +1,14 @@
 class QuizzsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_quizzes, only: [:index, :update, :save_question]
+  # TODO: Do we need?
+  # before_action :authenticate_user!
+  # before_action :set_quizzes, only: [:index]
 
-  def index
-  end
+  # def index
+  # end
 
-  private
+  # private
 
-    def set_quizzes
-      @quizzes = Quizz.includes(:questions).order('title ASC').paginate(:page => params[:page], :per_page => 5)
-    end
+  #   def set_quizzes
+  #     @quizzes = Quizz.published.includes(:questions).paginate(:page => params[:page], :per_page => 5)
+  #   end
 end

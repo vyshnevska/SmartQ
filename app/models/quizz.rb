@@ -5,6 +5,8 @@ class Quizz < ActiveRecord::Base
   before_destroy :log_to_history
 
   has_many :questions, :dependent => :destroy
+  has_many :user_assessments
+
   belongs_to :category
   serialize :options, Hash
   accepts_nested_attributes_for :questions, :allow_destroy => :true
@@ -21,6 +23,8 @@ class Quizz < ActiveRecord::Base
   aasm_event :set_to_completed do
     transitions from: :draft, to: :published
   end
+
+  default_scope { order('title ASC') }
 
   def all_marked?
     self.questions.all?{|question| question.any_marked?}
@@ -40,5 +44,16 @@ class Quizz < ActiveRecord::Base
 
   def can_complete?
     can_edit? && has_questions?
+  end
+
+  def category_blocks
+    case self.options['category_level']
+    when 'multiple'
+      self.questions.map{|q| q.category.title}.uniq.sort!
+    when 'one'
+      [self.category.title]
+    else
+      []
+    end
   end
 end

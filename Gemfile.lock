@@ -30,8 +30,8 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.10)
-    bootstrap-datepicker-rails (1.3.1.1)
-      railties (>= 3.0)
+    bootstrap-sass (3.1.1.1)
+      sass (~> 3.2)
     builder (3.2.2)
     bullet (4.14.4)
       activesupport (>= 3.0.0)
@@ -195,10 +195,11 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.1.7)
-      actionpack (>= 3.1)
-      execjs
-      railties (>= 3.1)
+    twitter-bootstrap-rails (3.2.0)
+      actionpack (~> 4.1)
+      execjs (~> 2.2)
+      rails (~> 4.1)
+      railties (~> 4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uniform_notifier (1.7.0)
@@ -214,7 +215,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm (= 3.3.3)
-  bootstrap-datepicker-rails
+  bootstrap-sass (~> 3.1.1.0)
   bullet
   capybara
   capybara-webkit
@@ -242,5 +243,5 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   shoulda-matchers
   simple_form
-  twitter-bootstrap-rails (= 2.1.7)
+  twitter-bootstrap-rails (= 3.2)
   will_paginate

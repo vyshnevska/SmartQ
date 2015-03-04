@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'quizzs#index'
+  resources :user_assessments
+
+  root 'user_assessments#index'
 
   namespace :admin do
     root 'categories#index'
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :quizzs, only: [:index]
+  resources :user_assessments
   devise_for :users
   resources :users
 end

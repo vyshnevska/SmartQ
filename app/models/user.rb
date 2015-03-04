@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
+  has_many :user_assessments
 
   def set_default_role
     self.role ||= :user
@@ -19,5 +20,10 @@ class User < ActiveRecord::Base
     def current_user
       Thread.current[:current_user]
     end
+  end
+
+  # TODO: extend permission by sections
+  def has_permission?(section)
+    false
   end
 end

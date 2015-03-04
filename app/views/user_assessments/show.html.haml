@@ -1,0 +1,8 @@
+%p
+  %b= "#{@user_assessment.user.name.capitalize}, You got #{@user_assessment.grade} points"
+
+= render 'user_assessment'#, :locals => { :view_mode => @view_mode }
+
+= link_to 'Edit', edit_user_assessment_path(@user_assessment)
+\|
+= link_to 'Back', user_assessments_path
