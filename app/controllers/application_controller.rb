@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :authenticate_user!
   before_filter :set_current_user
 
   def set_current_user
@@ -15,11 +16,6 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_root(msg, type)
     redirect_to root_path, type.to_sym => msg
-  end
-
-  #TODO: Rework for ajax
-  def admin_action?
-    redirect_to root_path unless current_user.try(:admin?)
   end
 
   protected

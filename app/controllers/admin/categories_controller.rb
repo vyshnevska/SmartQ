@@ -1,5 +1,4 @@
-class  Admin::CategoriesController < ApplicationController
-  before_action :restrict_user_by_role
+class  Admin::CategoriesController < AdminController
   before_action :set_categories, only: [:index, :update, :destroy]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
@@ -25,11 +24,6 @@ class  Admin::CategoriesController < ApplicationController
   def destroy
     redirect_to admin_categories_path, @category.destroy ? { notice: I18n.t('controllers.categories.destroyed', :category => @category.id) } : { error: I18n.t('controllers.categories.not_destroyed', :category => @category.id) }
   end
-
-  protected
-    def restrict_user_by_role
-      redirect_to root_path, :alert => I18n.t('controllers.categories.restrict_user') unless current_user.admin?
-    end
 
   private
     def set_categories
