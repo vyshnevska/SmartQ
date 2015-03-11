@@ -17,13 +17,16 @@ gem 'jquery-ui-rails'
 gem 'simple_form'
 gem 'nested_form'
 
-gem 'coffee-rails', '~> 4.0.0'
 gem 'haml-rails'
 gem 'haml'
-gem 'sass-rails', '~> 4.0.3'
 gem 'sass'
-# gem "therubyracer"
-# gem "less-rails"
+
+group :assets do
+  gem 'therubyracer'
+  gem 'sass-rails',   '~> 4.0.3'
+  gem 'coffee-rails', '~> 4.0.0'
+  gem 'uglifier'
+end
 
 # gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-sass', '~> 3.1.1.0'
