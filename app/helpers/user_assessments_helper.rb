@@ -3,10 +3,12 @@ module UserAssessmentsHelper
     answer.correct? ? 'correct' : ''
   end
 
-  def mark_answer(question, answer)
-    is_checked = @user_assessment.user_answers[question] == answer.id.to_s
+  def is_checked?(question, answer)
+    @user_assessment.user_answers[question.id.to_s] == answer.id.to_s
+  end
 
-    if is_checked
+  def mark_answer(question, answer)
+    if is_checked?(question, answer)
       answer.correct? ? 'text-success' : 'text-primary'
     else
       answer.correct? ? 'text-success' : ''

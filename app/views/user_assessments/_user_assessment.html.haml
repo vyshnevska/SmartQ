@@ -1,19 +1,18 @@
-.accordion#accordion2
+.accordion#user_assessment
   - @user_assessment.quizz.category_blocks.each_with_index do |block, index|
     .accordion-group
       .accordion-heading
-        %a.accordion-toggle{ 'data-toggle' => "collapse", 'data-parent' => "#accordion2", :href => "#collapseBlock#{index+1}" }
+        %a.accordion-toggle{ 'data-toggle' => "collapse", 'data-parent' => "#user_assessment", :href => "#collapseBlock#{index+1}" }
           = block
-      .accordion-body.collapse.in{ :id => "collapseBlock#{index+1}" }
+      .accordion-body.collapse{ :id => "collapseBlock#{index+1}", :class => (index == 0) || @view_mode ? "in" : "" }
         .accordion-inner
           - @user_assessment.quizz.questions.by_category(block).each do |question|
             %dl
               %dt= question.title
               - question.answers.each do |answer|
-                - checked = @user_assessment.user_answers[question.id.to_s] == answer.id.to_s
                 %dd
-                  = radio_button 'answer_id', '', answer.id, { :name => "user_answers[#{question.id}]", :disabled => @view_mode, :checked => checked }
-                  %label{ :for => "answer_id__#{answer.id}", :class => @view_mode && mark_answer(question.id.to_s, answer) }
+                  = radio_button 'answer_id', '', answer.id, { :name => "user_answers[#{question.id}]", :disabled => @view_mode, :checked => is_checked?(question, answer) }
+                  %label{ :for => "answer_id__#{answer.id}", :class => @view_mode && mark_answer(question, answer) }
                     = answer.title
                   - if current_user.has_permission?('mark_correct')
                     %em.text-success
