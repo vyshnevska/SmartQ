@@ -4,12 +4,6 @@ class UserAssessmentsController < ApplicationController
   before_action :set_quizzes, only: [:index]
   respond_to :html
 
-  def index
-    # @user_assessments = UserAssessment.all
-    @quizzes = Quizz.published
-    respond_with(@user_assessments)
-  end
-
   def show
     @view_mode = true
     respond_with(@user_assessment)

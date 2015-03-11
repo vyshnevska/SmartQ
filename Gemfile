@@ -19,31 +19,23 @@ gem 'nested_form'
 
 gem 'haml-rails'
 gem 'haml'
-gem 'sass'
 
-group :assets do
-  gem 'therubyracer'
-  gem 'sass-rails',   '~> 4.0.3'
-  gem 'coffee-rails', '~> 4.0.0'
+group :assets do  
   gem 'uglifier'
 end
 
-# gem 'bootstrap-datepicker-rails'
-gem 'bootstrap-sass', '~> 3.1.1.0'
-gem 'twitter-bootstrap-rails', '3.2'
+gem 'bootstrap-sass', '~> 3.3.3'
+gem 'sass-rails', '>= 3.2'
+gem 'sprockets-rails'
 
 gem 'aasm', '3.3.3'
 gem 'will_paginate'
-gem 'hairtrigger'
 
 group :development, :test do
   gem 'pry'
   gem 'pry-doc'
 
   gem 'rspec-rails'
-  gem 'rspec-mocks'
-  gem 'rspec-activemodel-mocks'
-
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'database_cleaner'

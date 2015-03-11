@@ -12,10 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+
+//= require bootstrap-sprockets
 
 //= require jquery-ui
 //= require_tree .
-
-// require bootstrap-datepicker
-// require bootstrap-datepicker/core
