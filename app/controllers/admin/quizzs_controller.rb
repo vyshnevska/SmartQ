@@ -103,7 +103,6 @@ class Admin::QuizzsController < AdminController
     end
 
     def quizz_data_params
-      # params.require(:quizz).permit(:questions => [:title], :answers => [:title, :correct] )
       params.require(:question).permit(:title, :category_id, :answers_attributes => [:id, :title, :correct])
     end
 end
