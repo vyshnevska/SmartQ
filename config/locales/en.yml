@@ -10,6 +10,13 @@ en:
     destroy: 'Destroy'
     new: 'New'
     progress: 'Progress Bar'
+    devise:
+      sign_in: 'Sign In'
+      sign_up: 'Sign up'
+      forgot_ps: 'Forgot password?'
+      placeholders:
+        email: 'Email'
+        password: 'Password'
   modal:
     new: 'New'
     create: 'Create'
