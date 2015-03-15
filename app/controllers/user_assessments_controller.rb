@@ -11,6 +11,7 @@ class UserAssessmentsController < ApplicationController
 
   def new
     @user_assessment = UserAssessment.find_or_create_by(:quizz_id => params[:quizz], :user_id => current_user.id, :grade => nil)
+    @user_assessment.progress!
     respond_with(@user_assessment)
   end
 
@@ -18,6 +19,7 @@ class UserAssessmentsController < ApplicationController
   end
 
   def update
+    @user_assessment.finish!
     @user_assessment.update(:user_answers => user_answers_params.to_h)
     respond_with(@user_assessment)
   end

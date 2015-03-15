@@ -62,7 +62,7 @@ class Admin::QuizzsController < AdminController
   end
 
   def destroy
-    redirect_to quizzs_path, notice: @quizz.destroy ? 
+    redirect_to admin_quizzs_path, notice: @quizz.destroy ? 
       I18n.t('controllers.quizzes.destroyed', :quizz => @quizz.id) : I18n.t('controllers.quizzes.not_destroyed', :quizz => @quizz.id)
   end
 
