@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'categories#index'
-    # root 'quizzs#index'
     resources :categories
     resources :quizzs, only: [:index, :new, :create, :edit, :update, :destroy] do
       resources :questions do
@@ -22,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :quizzs, only: [:index]
   resources :user_assessments
-  devise_for :users
+  devise_for :users, :controllers => { :sessions => "custom_sessions" }
   resources :users
 
   # Always redirect to root when unknown route

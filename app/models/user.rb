@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
   has_many :user_assessments
 
+  serialize :location, Hash
+  geocoded_by :location
+  after_validation :geocode
+
   def set_default_role
     self.role ||= :user
   end

@@ -1,6 +1,5 @@
 class Admin::QuizzsController < AdminController
   before_action :set_quizz, only: [:show, :edit, :update, :destroy, :add_question, :save_question, :complete]
-  
   before_action :set_quizzes, only: [:index, :update, :save_question]
 
   respond_to :js, only: [:new, :edit, :create, :update, :add_question]

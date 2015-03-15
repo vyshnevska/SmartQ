@@ -1,5 +1,19 @@
-%h3= 'User'
-%p= 'Name:'
-  = @user.name if @user.name
-%p= 'Email:'
-  = @user.email if @user.email
+%h3= I18n.t('views.users.details')
+.row
+  .col-sm-8
+    = @user.name
+.row
+  .col-sm-8
+    = @user.email
+.row
+  .col-sm-8
+    %dl
+      %dt= I18n.t('views.users.location')
+      - if @user.location.empty?
+        %dd= I18n.t('views.users.no_location')
+      - else
+        - @user.location.each do |k, v|
+          %dd= "#{k}: #{v}"
+
+
+= link_to I18n.t('views.nav.edit_profile'), edit_user_registration_path
