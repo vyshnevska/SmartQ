@@ -1,6 +1,10 @@
 module LogHistory
   extend ActiveSupport::Concern
 
+  included do
+    before_destroy :log_to_history
+  end
+
   def log_to_history
     Log.create(
         table_name: self.class.name,

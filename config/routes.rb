@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :quizzs, only: [:index]
   resources :user_assessments
-  devise_for :users, :controllers => { :sessions => "custom_sessions" }
+  devise_for :users, :controllers => { :sessions => "custom_sessions", :registrations => "custom_registrations" }
   resources :users
 
   # Always redirect to root when unknown route

@@ -2,7 +2,7 @@ module StoreLocation
   extend ActiveSupport::Concern
 
   included do
-    before_action :store_user_address, :only => [:create]
+    after_action :store_user_address, :only => [:create]
   end
 
    def store_user_address
@@ -16,10 +16,7 @@ module StoreLocation
       signed_in_root_path(resource)
     end
 
-    # def after_sign_up_path_for(resource)
-    #   signed_in_root_path(resource)
-    # end
-
-    # def after_inactive_sign_up_path_for(resource)
-    # end
+    def after_sign_up_path_for(resource)
+      signed_in_root_path(resource)
+    end
 end
