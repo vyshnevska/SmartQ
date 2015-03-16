@@ -22,7 +22,11 @@ Rails.application.routes.draw do
   resources :quizzs, only: [:index]
   resources :user_assessments
   devise_for :users, :controllers => { :sessions => "custom_sessions", :registrations => "custom_registrations" }
-  resources :users
+  resources :users do
+    member do
+      get :switch_to
+    end
+  end
 
   # Always redirect to root when unknown route
   get '*path' => redirect('/')
