@@ -4,8 +4,8 @@ feature 'User signs in' do
   scenario 'with valid email and password' do
     user_sign_in
 
-    within '#alert-notifications' do
-      expect(page).to have_content('Signed in successfully.')
+    within '#alert-notifications' do 
+      expect(page).to have_content(I18n.t('devise.custom_sessions.signed_in'))
     end
     expect(page.current_path).to eq(root_path)
   end
@@ -14,7 +14,7 @@ feature 'User signs in' do
     user_sign_in({ :email => 'email' })
 
     within '#alert-notifications' do
-      expect(page).to have_content('Invalid email or password.')
+      expect(page).to have_content(I18n.t('devise.failure.not_found_in_database', :authentication_keys => 'email'))
     end
   end
 
@@ -22,7 +22,7 @@ feature 'User signs in' do
     user_sign_in({ :password => 'pass' })
 
     within '#alert-notifications' do
-      expect(page).to have_content('Invalid email or password.')
+      expect(page).to have_content(I18n.t('devise.failure.not_found_in_database', :authentication_keys => 'email'))
     end
   end
 end

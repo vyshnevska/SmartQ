@@ -2,8 +2,6 @@ class Quizz < ActiveRecord::Base
   include AASM
   include LogHistory
 
-  before_destroy :log_to_history
-
   has_many :questions, :dependent => :destroy
   has_many :user_assessments
 

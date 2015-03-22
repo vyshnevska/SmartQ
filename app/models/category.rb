@@ -1,6 +1,5 @@
 class Category < ActiveRecord::Base
   include LogHistory
-  before_destroy :log_to_history
 
   has_many :questions
   has_many :quizzes

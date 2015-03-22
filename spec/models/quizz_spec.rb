@@ -4,7 +4,7 @@ RSpec.describe Quizz, :type => :model do
   it { expect have_many :questions }
   it { expect belong_to :categories }
   it { should validate_presence_of :title }
-  it { should validate_uniqueness_of :title }
+  # it { should validate_uniqueness_of :title }
 
   it 'has a valid factory' do
     expect(build(:quizz)).to be_valid

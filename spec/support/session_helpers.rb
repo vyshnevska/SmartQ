@@ -6,7 +6,7 @@ module Features
       fill_in 'Email', with: email
       fill_in 'Password', with: password
       fill_in 'Password confirmation', with: password
-      click_button 'Sign up'
+      click_button 'Sign Up'
     end
 
     def user_sign_in(options = {})
@@ -15,7 +15,7 @@ module Features
 
       fill_in 'Email', with: options[:email] || @user.email
       fill_in 'Password', with: options[:password] || @user.password
-      click_button 'Sign in'
+      click_button 'Sign In'
     end
 
     def admin_sign_in(options = {})
@@ -24,11 +24,18 @@ module Features
 
       fill_in 'Email', with: options[:email] || @admin_user.email
       fill_in 'Password', with: options[:password] || @admin_user.password
-      click_button 'Sign in'
+      click_button 'Sign In'
     end
 
     def set_category
       @category = FactoryGirl.create(:category)
+    end
+
+    def create_quizz
+      set_category
+      @quizz1     = FactoryGirl.create(:quizz_with_qsts)
+      @question1  = @quizz1.questions.first
+      @answers    = @question1.answers.inject({}){ |hash, answ| hash[answ.id] = answ.title; hash }
     end
   end
 end

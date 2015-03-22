@@ -5,7 +5,7 @@ feature 'Admin signs in' do
     admin_sign_in
 
     within '#alert-notifications' do
-      expect(page).to have_content('Signed in successfully.')
+      expect(page).to have_content(I18n.t('devise.custom_sessions.signed_in'))
     end
     expect(page.current_path).to eq(admin_root_path)
   end
@@ -14,7 +14,7 @@ feature 'Admin signs in' do
     admin_sign_in({ :email => 'email' })
 
     within '#alert-notifications' do
-      expect(page).to have_content('Invalid email or password.')
+      expect(page).to have_content(I18n.t('devise.failure.not_found_in_database', :authentication_keys => 'email'))
     end
   end
 
@@ -22,7 +22,7 @@ feature 'Admin signs in' do
     admin_sign_in({ :password => 'pass' })
 
     within '#alert-notifications' do
-      expect(page).to have_content('Invalid email or password.')
+      expect(page).to have_content(I18n.t('devise.failure.not_found_in_database', :authentication_keys => 'email'))
     end
   end
 end

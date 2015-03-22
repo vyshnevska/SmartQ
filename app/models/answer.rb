@@ -1,6 +1,5 @@
 class Answer < ActiveRecord::Base
   include LogHistory
-  before_destroy :log_to_history
 
   belongs_to :question
 

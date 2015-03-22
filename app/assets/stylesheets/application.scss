@@ -32,9 +32,21 @@
   border-color: #faebcc;
 }
 
-.email, .password {
+/* Login pages */
+.email, .password, #user_name, #user_email, #user_password, #user_password_confirmation {
   width: 250px;
 }
+/***************/
+
+/* Admin::Users Map */
+#google_map{
+  width: 600px;
+  padding: 0px;
+  margin: 0px;
+   /*width: auto;*/
+  height: 400px
+}
+/*******************/
 
 /* Margins */
 .margin-lg-top    { margin-top: 30px;    }

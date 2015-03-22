@@ -4,7 +4,11 @@ class UserAssessment < ActiveRecord::Base
   belongs_to :user
   belongs_to :quizz
   belongs_to :question, :foreign_key => 'current_question_id'
+
   serialize :user_answers, Hash
+  delegate :title,  :to => :quizz, :prefix => true
+  delegate :name,   :to => :user, :prefix => true
+
   before_update :update_grades
 
   def update_grades

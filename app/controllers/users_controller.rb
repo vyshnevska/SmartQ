@@ -1,15 +1,13 @@
 class UsersController < AdminController
+  before_action :users_with_locations, :only => [:index, :show]
+
   def index
     @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
-    unless current_user.admin?
-      unless @user == current_user
-        redirect_to :back, :alert => "Access denied."
-      end
-    end
+    redirect_to :back, :alert => "Access denied." unless @user == current_user
   end
 
   def update
@@ -28,9 +26,12 @@ class UsersController < AdminController
   end
 
   private
+    def secure_params
+      params.require(:user).permit(:role)
+    end
 
-  def secure_params
-    params.require(:user).permit(:role)
-  end
+    def users_with_locations
+      @locations = User.select{|u| u.location.presence}
+    end
 
 end

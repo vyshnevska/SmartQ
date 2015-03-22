@@ -9,7 +9,7 @@ FactoryGirl.define do
     association :quizz
     after(:create) do |question|
       3.times do
-        question.answers << FactoryGirl.create(:answer)
+        question.answers << FactoryGirl.create(:answer, question: question)
       end
     end
   end

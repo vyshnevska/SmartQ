@@ -4,8 +4,8 @@ feature 'Admin creates quizz' do
   scenario 'create new quizz without category', :js => true, :driver => :webkit do
     admin_sign_in
     visit admin_quizzs_path
-    expect(page).to have_content('No available quizzes')
-    expect(page).to have_content('Create some new quizzes')
+    expect(page).to have_content( I18n.t('views.quizzes.warning_box.no_quizz'))
+    expect(page).to have_content( I18n.t('views.quizzes.warning_box.details'))
 
     # Create quizz via popup
     click_link 'New'
@@ -15,7 +15,7 @@ feature 'Admin creates quizz' do
     click_button 'Create'
 
     within '#alert-notifications' do
-      expect(page).to have_content('Quizz 1 was successfully created')
+      expect(page).to have_content(I18n.t('controllers.quizzes.created', :quizz => 1))
     end
     page.find('#quizzes_list').should have_text('title1')
   end
@@ -34,7 +34,7 @@ feature 'Admin creates quizz' do
     click_button 'Create'
 
     within '#alert-notifications' do
-      expect(page).to have_content('Quizz 1 was successfully created')
+      expect(page).to have_content(I18n.t('controllers.quizzes.created', :quizz => 1))
     end
 
     # Check if quizz was added to the list

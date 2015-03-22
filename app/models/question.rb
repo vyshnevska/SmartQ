@@ -1,6 +1,5 @@
 class Question < ActiveRecord::Base
   include LogHistory
-  before_destroy :log_to_history
 
   has_many :answers, :dependent => :destroy
   belongs_to :quizz

@@ -12,7 +12,7 @@ en:
     progress: 'Progress Bar'
     devise:
       sign_in: 'Sign In'
-      sign_up: 'Sign up'
+      sign_up: 'Sign Up'
       forgot_ps: 'Forgot password?'
       placeholders:
         email: 'Email'
@@ -26,6 +26,8 @@ en:
     cancel: 'Cancel'
     close: 'Close'
   controllers:
+    admin:
+      restrict_user: 'Access denied. Admin is required!'
     quizzes:
       created: 'Quizz %{quizz} was successfully created'
       updated: 'Quizz %{quizz} was successfully updated'
@@ -36,7 +38,6 @@ en:
     categories:
       destroyed: 'Category %{category} was successfully destroyed'
       not_destroyed: "Category %{category} wasn't destroyed"
-      restrict_user: 'Access denied. Admin is required!'
   models:
     categories:
       one_blank_category: 'You can not create new category if you have another unfilled one'
@@ -45,10 +46,11 @@ en:
   views:
     nav:
       categories: 'Categories'
+      profile: 'Profile'
       edit_profile: 'Edit account'
       logout: 'Sign out'
-      sign_in: 'Sign in'
-      sign_up: 'Sign up'
+      sign_in: 'Sign In'
+      sign_up: 'Sign Up'
       users: 'Users'
       users_count: 'Users: %{count}'
       assessment: Assess Myself
@@ -83,3 +85,8 @@ en:
       category: 'Category'
     assessments:
       new: 'Start Assessment'
+    users:
+      title: 'Users'
+      details: 'User Details'
+      location: 'Location Details'
+      no_location: 'Unknown'

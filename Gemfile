@@ -20,7 +20,7 @@ gem 'nested_form'
 gem 'haml-rails'
 gem 'haml'
 
-group :assets do  
+group :assets do
   gem 'uglifier'
 end
 
@@ -30,6 +30,7 @@ gem 'sprockets-rails'
 
 gem 'aasm', '3.3.3'
 gem 'will_paginate'
+gem 'geocoder'
 
 group :development, :test do
   gem 'pry'
@@ -41,13 +42,15 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers', require: false
   gem 'rspec-collection_matchers'
-
   gem 'quiet_assets'
-
   gem 'bullet'
 end
 
 group :test do
   gem 'ffaker'
   gem 'capybara-webkit'
+  gem "simplecov"
+  # coverege
+  gem 'metric_fu'
+  gem 'rails_best_practices'
 end

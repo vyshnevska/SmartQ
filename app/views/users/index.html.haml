@@ -1,8 +1,10 @@
 .container
   .row
-    %h3='Users'
-    .column
-      %table.table
-        %tbody
-          - @users.each do |user|
-            %tr= render user
+    %h3= I18n.t('views.users.title')
+  .col-md-6
+    %dl
+    - @users.each do |user|
+      %dt
+        = render user
+  .col-md-6
+    = render 'google_map'

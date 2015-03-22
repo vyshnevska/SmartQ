@@ -1,5 +1,4 @@
 class UserAssessmentsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_user_assessment, only: [:show, :edit, :update, :destroy]
   before_action :set_quizzes, only: [:index]
   respond_to :html
