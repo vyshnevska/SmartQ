@@ -4,7 +4,7 @@
     %span.sr-only= I18n.t('modal.close')
   %h4#modal-title.modal-title= I18n.t('modal.edit')
 
-= simple_form_for @quizz, :url => admin_quizz_path, :remote => true, :html => { :class => 'form-horizontal', :novalidate => '' } do |f|
+= simple_form_for quizz, :url => admin_quizz_path, :remote => true, :html => { :class => 'form-horizontal', :novalidate => '' } do |f|
   .modal-body.resizable-content
     %label.col-sm-3.control-label{for: 'title'}= I18n.t('views.quizzes.form.title')
     .form-group
@@ -13,9 +13,9 @@
     %label.col-sm-3.control-label{for: 'category'}= I18n.t('views.quizzes.form.category')
     .form-group
       .col-sm-8
-        = f.input :category_id, :collection => Category.filled, :selected => @quizz.category.try(:title), :required => true, :autocomplete => 'off', :include_blank => true, :label => false, :input_html => { class: 'form-control' }
-    - if @quizz.questions.any?
-      - @quizz.questions.each_with_index do |q, index|
+        = f.input :category_id, :collection => Category.filled, :selected => quizz.category.try(:title), :required => true, :autocomplete => 'off', :include_blank => true, :label => false, :input_html => { class: 'form-control' }
+    - if quizz.questions.any?
+      - quizz.questions.each_with_index do |q, index|
         .bs-callout.bs-callout-danger-purple.bs-callout-sm-inner{:id => "question-#{q.id}"}
           %label.col-sm-3.control-label= build_form_index(index, I18n.t('views.quizzes.form.question'))
           .form-group

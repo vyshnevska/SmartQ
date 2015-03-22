@@ -1,7 +1,7 @@
 - section = 'quizz'
 .section
   .col-sm-3.right-side
-    = check_box_tag "category_level[one]", 'quizz', render_category_level?(@quizz, section), :name => 'category[options]'
+    = check_box_tag "category_level[one]", 'quizz', render_category_level?(quizz, section), :name => 'category[options]'
   .col-sm-6.text-bold
     = I18n.t('views.quizzes.form.one_level')
   .quizz-level-section
@@ -14,6 +14,6 @@
 - section = 'multiple'
 .section
   .col-sm-3.right-side
-    = check_box_tag "category_level[multiple]]", 'multiple', render_category_level?(@quizz, section), :name => 'category[options]'
+    = check_box_tag "category_level[multiple]]", 'multiple', render_category_level?(quizz, section), :name => 'category[options]'
   .col-sm-6.text-bold
     = I18n.t('views.quizzes.form.multiple_level')

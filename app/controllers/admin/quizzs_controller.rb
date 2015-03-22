@@ -61,7 +61,7 @@ class Admin::QuizzsController < AdminController
   end
 
   def destroy
-    redirect_to admin_quizzs_path, notice: @quizz.destroy ? 
+    redirect_to admin_quizzs_path, notice: @quizz.destroy ?
       I18n.t('controllers.quizzes.destroyed', :quizz => @quizz.id) : I18n.t('controllers.quizzes.not_destroyed', :quizz => @quizz.id)
   end
 
@@ -82,12 +82,6 @@ class Admin::QuizzsController < AdminController
           data[:correct] = "false" unless data.include?("correct")
           a.update(data)
         end
-      end
-    end
-
-    def create_answers(data, question)
-      data[:answers].each do |answer|
-        a =  question.answers.build(answer)
       end
     end
 

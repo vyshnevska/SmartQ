@@ -1,2 +1,2 @@
-$('#modal-default #modal-content').html("<%= escape_javascript(render :partial => 'admin/quizzs/shared/edit') %>");
+$('#modal-default #modal-content').html("<%= escape_javascript(render :partial => 'admin/quizzs/shared/edit', :locals => { :quizz => @quizz } ) %>");
 $('#advice-notifications').html("<%= escape_javascript(render partial: 'layouts/notifications') %>");

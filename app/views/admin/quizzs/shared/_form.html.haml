@@ -8,10 +8,10 @@
 
   / Build categories if any
   - if Category.filled.any?
-    = render :partial => 'admin/quizzs/shared/categories', :locals => { :f => f }
+    = render :partial => 'admin/quizzs/shared/categories', :locals => { :f => f , :quizz => quizz }
 
   / Build questions with answers if any
-  - if @quizz.questions.any?
+  - if quizz.questions.any?
     = render :partial => 'admin/quizzs/shared/questions_with_answers', :locals => { :f => f }
 
 .modal-footer

@@ -9,8 +9,8 @@
         %th= I18n.t('general.actions')
 
     %tbody#quizzes_list
-      - if @quizzes.any?
-        - @quizzes.each do |quizz|
+      - if quizzes.any?
+        - quizzes.each do |quizz|
           = render :partial => 'admin/quizzs/shared/quizz', :locals => { quizz: quizz }
       - else
         %tr.bs-callout.bs-callout-danger-purple
@@ -21,4 +21,4 @@
     .col-sm-4.big-font
       = link_to I18n.t('views.quizzes.table.actions.new'), new_admin_quizz_path, { :remote => true, :data => { :target => '#modal-default', :toggle => 'modal' }, :class => 'btn btn-info-purple pull-left' }
     .col-sm-4.big-font
-      = will_paginate @quizzes
+      = will_paginate quizzes

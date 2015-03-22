@@ -4,6 +4,6 @@
     %span.sr-only= I18n.t('modal.close')
   %h4#modal-title.modal-title= I18n.t('modal.new')
 
-= simple_form_for @quizz, :url => admin_quizzs_path, :remote => true, :html => { :class => 'form-horizontal', :novalidate => '' } do |f|
-  = render :partial => 'admin/quizzs/shared/form', :locals => { :f => f, :type => :new }
+= simple_form_for quizz, :url => admin_quizzs_path, :remote => true, :html => { :class => 'form-horizontal', :novalidate => '' } do |f|
+  = render :partial => 'admin/quizzs/shared/form', :locals => { :f => f, :type => :new, :quizz => quizz }
 

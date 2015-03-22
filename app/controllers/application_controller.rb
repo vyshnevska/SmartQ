@@ -13,9 +13,9 @@ class ApplicationController < ActionController::Base
     User.current_user = current_user
   end
 
-  def redirect_not_permitted(msg)
-    redirect_to root_path, alert: msg
-  end
+  # def redirect_not_permitted(msg)
+  #   redirect_to root_path, alert: msg
+  # end
 
   def redirect_to_root(msg, type)
     redirect_to root_path, type.to_sym => msg

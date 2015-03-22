@@ -8,9 +8,9 @@
         %th= I18n.t('views.quizzes.table.header.td3')
 
     %tbody#quizzes_list
-      - if @quizzes.any?
-        - @quizzes.each do |quizz|
-          = render :partial => 'quizzs/shared/quizz', :locals => { quizz: quizz }
+      - if quizzes.any?
+        - quizzes.each do |quizz|
+          = render :partial => 'quizzs/shared/quizz', :locals => { :quizz => quizz }
       - else
         %tr.bs-callout.bs-callout-danger-purple
           %td{ :collspan => 5 }
@@ -19,4 +19,4 @@
 
   .row
     .col-sm-4.big-font
-      = will_paginate @quizzes
+      = will_paginate quizzes
