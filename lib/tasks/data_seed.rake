@@ -5,7 +5,7 @@ namespace :prod_data do
       category1 = Category.create!(:title => 'Block1', :description => '1 point for each correct answer')
       category2 = Category.create!(:title => 'Block2', :description => '2 points for each correct answer')
       quizz = Quizz.create!(:title => 'Trivial questions', :state => 'draft', :category_id => nil, :options => {'category_level' => 'multiple'})
-      
+
       # Question 1
       question1 = quizz.questions.create!(:title => "What is the name of Mickey Mouse's pet dog?", :category_id => category1.id)
       question1.answers.create!(:title => 'Goofy', :correct => false)

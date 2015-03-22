@@ -32,3 +32,5 @@ config/mail.yml
 # Ignore RubyMine .idea folder
 /.idea
 *.DS_Store
+rails_best_practices_output.html
+.metrics

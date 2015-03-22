@@ -49,4 +49,8 @@ end
 group :test do
   gem 'ffaker'
   gem 'capybara-webkit'
+  gem "simplecov"
+  # coverege
+  gem 'metric_fu'
+  gem 'rails_best_practices'
 end

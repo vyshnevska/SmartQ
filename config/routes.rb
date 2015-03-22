@@ -6,10 +6,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'categories#index'
     resources :categories
-    resources :quizzs, only: [:index, :new, :create, :edit, :update, :destroy] do
-      resources :questions do
-        resources :answers
-      end
+    resources :quizzs, :only => [:index, :new, :create, :edit, :update, :destroy] do
+      resources :questions
 
       member do
         get :add_question
@@ -17,9 +15,13 @@ Rails.application.routes.draw do
         get :complete
       end
     end
+
+    resources :questions, :only => [ :new, :create ] do
+      resources :answers, :only => [ :new ]
+    end
   end
 
-  resources :quizzs, only: [:index]
+  resources :quizzs, :only => [:index]
   resources :user_assessments
   devise_for :users, :controllers => { :sessions => "custom_sessions", :registrations => "custom_registrations" }
   resources :users do

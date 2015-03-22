@@ -45,7 +45,7 @@ class Admin::QuizzsController < AdminController
       redirect_to_root(I18n.t('controllers.quizzes.completed', :quizz => @quizz.id), :notice)
     else
       redirect_to_root(I18n.t('controllers.quizzes.not_completed', :quizz => @quizz.id), :alert)
-    end 
+    end
   end
 
 
@@ -76,10 +76,12 @@ class Admin::QuizzsController < AdminController
     end
 
     def update_answers(data, question)
-      data[:answers_attributes].each do |answer_id, data|
-        a =  question.answers.find_or_create_by(:id => answer_id)
-        data[:correct] = "false" unless data.include?("correct")
-        a.update(data)
+      if data[:answers_attributes]
+        data[:answers_attributes].each do |answer_id, data|
+          a =  question.answers.find_or_create_by(:id => answer_id)
+          data[:correct] = "false" unless data.include?("correct")
+          a.update(data)
+        end
       end
     end
 
@@ -98,7 +100,7 @@ class Admin::QuizzsController < AdminController
     end
 
     def question_params
-      params.require(:question).permit(:title, :category_id, :questions => [ :id, :title, :answers_attributes => [:id, :title, :correct]])
+      params.require(:quizz).permit(:title, :category_id, :questions => [ :id, :title, :answers_attributes => [:id, :title, :correct]])
     end
 
     def quizz_data_params

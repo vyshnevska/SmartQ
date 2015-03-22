@@ -12,7 +12,7 @@ en:
     progress: 'Progress Bar'
     devise:
       sign_in: 'Sign In'
-      sign_up: 'Sign up'
+      sign_up: 'Sign Up'
       forgot_ps: 'Forgot password?'
       placeholders:
         email: 'Email'
@@ -49,8 +49,8 @@ en:
       profile: 'Profile'
       edit_profile: 'Edit account'
       logout: 'Sign out'
-      sign_in: 'Sign in'
-      sign_up: 'Sign up'
+      sign_in: 'Sign In'
+      sign_up: 'Sign Up'
       users: 'Users'
       users_count: 'Users: %{count}'
       assessment: Assess Myself

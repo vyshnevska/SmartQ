@@ -16,14 +16,14 @@
         = f.input :category_id, :collection => Category.filled, :selected => @quizz.category.try(:title), :required => true, :autocomplete => 'off', :include_blank => true, :label => false, :input_html => { class: 'form-control' }
     - if @quizz.questions.any?
       - @quizz.questions.each_with_index do |q, index|
-        .bs-callout.bs-callout-danger-purple.bs-callout-sm-inner
+        .bs-callout.bs-callout-danger-purple.bs-callout-sm-inner{:id => "question-#{q.id}"}
           %label.col-sm-3.control-label= build_form_index(index, I18n.t('views.quizzes.form.question'))
           .form-group
             .col-sm-8
               = text_field_tag :title, q.title, :name => "quizz[questions][#{q.id}][title]", :size => '50', :maxlength => '100'
-          .margin-sm-top
+          .answers.margin-sm-top
             - q.answers.each_with_index do |a, index|
-              .radio
+              .radio{:id => "answer-#{a.id}"}
                 %label.col-sm-3.control-label= build_form_index(index)
                 .form-group
                   .col-sm-4

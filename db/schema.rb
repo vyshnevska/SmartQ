@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150315113149) do
+ActiveRecord::Schema.define(version: 20150322175639) do
 
   create_table "answers", force: true do |t|
     t.string   "title",       limit: 200
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150315113149) do
     t.integer  "category_id"
   end
 
+  add_index "questions", ["category_id"], name: "index_questions_on_category_id", using: :btree
   add_index "questions", ["quizz_id"], name: "index_questions_on_quizz_id", using: :btree
 
   create_table "quizzs", force: true do |t|
@@ -59,6 +60,8 @@ ActiveRecord::Schema.define(version: 20150315113149) do
     t.text     "options"
   end
 
+  add_index "quizzs", ["category_id"], name: "index_quizzs_on_category_id", using: :btree
+
   create_table "user_assessments", force: true do |t|
     t.integer  "user_id"
     t.integer  "quizz_id"
@@ -69,6 +72,9 @@ ActiveRecord::Schema.define(version: 20150315113149) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "user_assessments", ["quizz_id"], name: "index_user_assessments_on_quizz_id", using: :btree
+  add_index "user_assessments", ["user_id"], name: "index_user_assessments_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -86,7 +92,7 @@ ActiveRecord::Schema.define(version: 20150315113149) do
     t.datetime "updated_at"
     t.integer  "role"
     t.string   "ip"
-    t.string   "location"
+    t.text     "location"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

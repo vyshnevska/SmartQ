@@ -1,7 +1,7 @@
 :javascript
   var progress_bar = "#{@user_assessment.quizz.questions.count}"
 
-%h2= @user_assessment.quizz.title
+%h2= @user_assessment.quizz_title
 %div{ :id => "progress", :class => "progress progress-warning progress-striped active" }
   %div{ :id => "myprogress", :class => "bar", :style => "width:0px; color:#000;" }
     = I18n.t('general.progress')

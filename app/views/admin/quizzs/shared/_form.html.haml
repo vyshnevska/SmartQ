@@ -13,7 +13,7 @@
   / Build questions with answers if any
   - if @quizz.questions.any?
     = render :partial => 'admin/quizzs/shared/questions_with_answers', :locals => { :f => f }
-    
+
 .modal-footer
   %button.btn.btn-default{data: { dismiss: 'modal' }, type: 'button'}= I18n.t('modal.cancel')
   = f.submit I18n.t('modal.create'), :id => 'add_new_quizz', class: 'button btn btn-green'

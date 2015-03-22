@@ -6,9 +6,11 @@ module StoreLocation
   end
 
    def store_user_address
-    current_user.ip = request.ip
-    current_user.location = request.location.data.to_hash.slice('country_code', 'region_code', 'city', 'zip_code', 'latitude', 'longitude')
-    current_user.save
+    if current_user
+      current_user.ip = request.ip
+      current_user.location = request.location.data.to_hash.slice('country_code', 'region_code', 'city', 'zip_code', 'latitude', 'longitude')
+      current_user.save
+    end
   end
 
   protected
