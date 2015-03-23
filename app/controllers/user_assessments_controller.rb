@@ -1,5 +1,5 @@
 class UserAssessmentsController < ApplicationController
-  before_action :set_user_assessment, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_assessment, only: [:show]
   before_action :set_quizzes, only: [:index]
   respond_to :html
 
@@ -14,8 +14,8 @@ class UserAssessmentsController < ApplicationController
     respond_with(@user_assessment)
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
   def update
     @user_assessment.finish!
@@ -23,10 +23,10 @@ class UserAssessmentsController < ApplicationController
     respond_with(@user_assessment)
   end
 
-  def destroy
-    @user_assessment.destroy
-    respond_with(@user_assessment)
-  end
+  # def destroy
+  #   @user_assessment.destroy
+  #   respond_with(@user_assessment)
+  # end
 
   private
     def set_quizzes
@@ -37,9 +37,9 @@ class UserAssessmentsController < ApplicationController
       @user_assessment = UserAssessment.find(params[:id])
     end
 
-    def user_assessment_params
-      params.require(:user_assessment).permit(:user_id, :grade, :quizz, :current_question_id, :state)
-    end
+    # def user_assessment_params
+    #   params.require(:user_assessment).permit(:user_id, :grade, :quizz, :current_question_id, :state)
+    # end
 
     def user_answers_params
       params.require(:user_answers)#.permit(:user_id, :grade, :quizz, :current_question_id, :state)

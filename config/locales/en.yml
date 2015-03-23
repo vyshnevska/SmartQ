@@ -54,6 +54,7 @@ en:
       users: 'Users'
       users_count: 'Users: %{count}'
       assessment: Assess Myself
+      users_assessment: Manage Assessments
     quizzes:
       table:
         caption: 'Quizzes'

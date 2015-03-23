@@ -7,5 +7,5 @@
     = I18n.t('general.progress')
 
 = simple_form_for(@user_assessment) do |f|
-  = render 'user_assessment'
+  = render 'user_assessment', :user_assessment => @user_assessment, :view_mode => nil
   = f.button :submit

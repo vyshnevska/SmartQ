@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :quizzs, :only => [:index]
-  resources :user_assessments
+  resources :user_assessments, :only => [ :index, :new, :update ]
   devise_for :users, :controllers => { :sessions => "custom_sessions", :registrations => "custom_registrations" }
   resources :users do
     member do

@@ -34,8 +34,8 @@ module Features
     def create_quizz
       set_category
       @quizz1     = FactoryGirl.create(:quizz_with_qsts)
-      @question1  = @quizz1.questions.first
-      @answers    = @question1.answers.inject({}){ |hash, answ| hash[answ.id] = answ.title; hash }
+      @questions  = @quizz1.questions.inject({}){ |hash, quest| hash[quest.id] = quest.title; hash }
+      @answers    = @quizz1.questions.map{|q| q.answers.inject({}){ |hash, answ| hash[answ.id] = answ.title; hash } }
     end
   end
 end
