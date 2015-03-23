@@ -20,6 +20,9 @@ Rails.application.routes.draw do
       resources :answers, :only => [ :new ]
     end
   end
+  namespace :api do
+    resources :users, :user_assessments
+  end
 
   resources :quizzs, :only => [:index]
   resources :user_assessments, :only => [ :index, :new, :update ]
