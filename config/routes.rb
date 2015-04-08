@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :user_assessments
-
-  root 'user_assessments#index'
+  root 'user_assessments#summary_report'
 
   namespace :admin do
     root 'categories#index'
@@ -20,6 +18,9 @@ Rails.application.routes.draw do
       resources :answers, :only => [ :new ]
     end
   end
+  namespace :api do
+    resources :users, :user_assessments
+  end
 
   resources :quizzs, :only => [:index]
   resources :user_assessments, :only => [ :index, :new, :update ]
@@ -29,6 +30,13 @@ Rails.application.routes.draw do
       get :switch_to
     end
   end
+
+  resources :user_assessments do
+    collection do
+      get :summary_report
+    end
+  end
+  get 'statistics'   => 'user_assessments#summary_report'
 
   # Always redirect to root when unknown route
   get '*path' => redirect('/')

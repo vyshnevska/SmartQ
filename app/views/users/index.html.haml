@@ -1,6 +1,7 @@
 .container
   .row
     %h3= I18n.t('views.users.title')
+    = link_to I18n.t('views.nav.users_count', :count => User.count), users_path
   .col-md-6
     %dl
     - @users.each do |user|

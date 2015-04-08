@@ -32,6 +32,8 @@ gem 'aasm', '3.3.3'
 gem 'will_paginate'
 gem 'geocoder'
 
+gem 'jbuilder' # used for serialization of models into JSON
+
 group :development, :test do
   gem 'pry'
   gem 'pry-doc'

@@ -1,7 +1,12 @@
 class UserAssessmentsController < ApplicationController
   before_action :set_user_assessment, only: [:show]
-  before_action :set_quizzes, only: [:index]
+  before_action :set_quizzes, only: [:index, :summary_report]
   respond_to :html
+
+
+  def summary_report
+    @data, @chart_title = build_chart_data
+  end
 
   def show
     @view_mode = true
@@ -43,5 +48,20 @@ class UserAssessmentsController < ApplicationController
 
     def user_answers_params
       params.require(:user_answers)#.permit(:user_id, :grade, :quizz, :current_question_id, :state)
+    end
+
+    def build_chart_data
+      total_quizzes = Quizz.includes(:questions)
+      draft_quizzes = total_quizzes.draft.count
+      marked_quizzes = total_quizzes.draft.select{|quizz| quizz.all_marked?}.count
+      published_quizzes = total_quizzes.published.count
+      ready_quizzes = total_quizzes.select{|quizz| quizz.can_complete?}.count
+      data = [
+              ['Draft', draft_quizzes],
+              ['Marked', marked_quizzes],
+              ['Published', published_quizzes],
+              ['Can complete', ready_quizzes]
+      ]
+      return data, I18n.t('views.chart.title', :number => total_quizzes.count)
     end
 end
