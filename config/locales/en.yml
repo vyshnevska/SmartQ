@@ -54,7 +54,7 @@ en:
       users: 'Users'
       users_count: 'Users: %{count}'
       assessment: Assess Myself
-      users_assessment: Manage Assessments
+      summary_report: Summary
     quizzes:
       table:
         caption: 'Quizzes'
@@ -91,3 +91,5 @@ en:
       details: 'User Details'
       location: 'Location Details'
       no_location: 'Unknown'
+    chart:
+      title: 'Quizzes( total #%{number} )'

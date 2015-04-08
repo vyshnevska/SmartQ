@@ -22,7 +22,7 @@ module ApplicationHelper
       link_to I18n.t('views.nav.users'), users_path
     end
     links += content_tag(:li) do
-      link_to I18n.t('views.nav.users_assessment'), user_assessments_path
+      link_to I18n.t('views.nav.summary_report'), statistics_path
     end
     links.html_safe
   end

@@ -16,9 +16,6 @@
         - if flash.any?
           = render :partial => 'layouts/notifications'
       .container-fluid
-        - if user_signed_in?
-          - if current_user.admin?
-            = link_to I18n.t('views.nav.users_count', :count => User.count), users_path
         = yield
 
     = render :partial => 'layouts/modal'
