@@ -19,6 +19,7 @@ gem 'nested_form'
 
 gem 'haml-rails'
 gem 'haml'
+gem "highcharts-rails", "~> 3.0.0"
 
 group :assets do
   gem 'uglifier'
