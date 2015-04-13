@@ -7,8 +7,8 @@
     %link{:rel => 'shortcut icon', :href => image_path('smartQ.ico')}
 
     = javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=3.exp'
-    = stylesheet_link_tag    'application', 'full-width-pics', 'user_assessments', 'quizzs', media: 'all'
-    = javascript_include_tag 'application'
+    = stylesheet_link_tag 'application', 'full-width-pics', 'user_assessments', 'quizzs', 'custom_charts', 'ace.min', media: 'all'
+    = javascript_include_tag 'application', 'charts/jquery.easypiechart.min.js'
     = csrf_meta_tag
 
   %body

@@ -1,0 +1,8 @@
+.infobox-container { width: 50%; }
+.highcharts-contextmenu, .highcharts-button {
+  bottom: auto !important;
+  top: 5px;
+}
+.chart {
+  float: left;
+}

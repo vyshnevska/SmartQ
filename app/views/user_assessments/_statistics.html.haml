@@ -1,12 +1,4 @@
-= javascript_include_tag 'highcharts'
+%div.chart{ :id => "container", :style => "width: 480px; height: 380px;"}
+  %script
+    = render 'assessment_chart.js', :data => @data, :chart_title => @chart_title
 
-:css
-  .highcharts-contextmenu, .highcharts-button {
-    bottom: auto !important;
-    top: 5px;
-  }
-
-
-%div{ :id => "container", :style => "width: 480px; height: 380px;"}
-%script
-  = render 'assessment_chart.js', :data => @data, :chart_title => @chart_title
