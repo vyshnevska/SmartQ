@@ -6,6 +6,7 @@ class UserAssessmentsController < ApplicationController
 
   def summary_report
     @data, @chart_title = build_chart_data
+    @report_data = build_report_graph_data
   end
 
   def show
@@ -63,5 +64,9 @@ class UserAssessmentsController < ApplicationController
               ['Can complete', ready_quizzes]
       ]
       return data, I18n.t('views.chart.title', :number => total_quizzes.count)
+    end
+
+    def build_report_graph_data
+      data = User.all.inject([]){ |arr, user| arr << {name: user.name, data: user.statistic_by_month.values || [0]}; arr }
     end
 end

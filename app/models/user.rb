@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
 
   validates :name, :presence => true, :uniqueness => true
 
+  START_PERIOD  = Date.new(2015, 1).to_s
+  END_PERIOD    = Date.new(2015, 5).to_s
+
   class << self
     def current_user=(user)
       Thread.current[:current_user] = user
@@ -29,5 +32,13 @@ class User < ActiveRecord::Base
   # TODO: extend permission by sections
   def has_permission?(section)
     false
+  end
+
+  def statistic_by_month
+    result = self.user_assessments.order('created_at').group('MONTH(created_at)').count
+    MonthRange.new(START_PERIOD..END_PERIOD).each_month do |month|
+      result.merge!(month => 0) unless result.keys.include?(month)
+    end
+    result.sort_by{|k,v| k}.to_h
   end
 end

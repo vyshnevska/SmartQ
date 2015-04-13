@@ -24,12 +24,6 @@ $('#quizz_report').highcharts({
       enableMouseTracking: false
     }
   },
-  series: [{
-    name: 'User1',
-    data: [1.0, 2.0, 3.0]
-  }, {
-    name: 'User2',
-    data: [2.0, 5.0, 1.0]
-  }]
+  series: <%= report_data.to_json.html_safe %>
 });
 
