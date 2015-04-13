@@ -4,6 +4,8 @@
     %meta{ :charset => 'utf-8'}
     %meta{ :content => 'IE=edge', :http => { equiv: 'X-UA-Compatible' } }
     %title= I18n.t('general.app_name')
+    %link{:rel => 'shortcut icon', :href => image_path('smartQ.ico')}
+
     = javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=3.exp'
     = stylesheet_link_tag    'application', 'full-width-pics', 'user_assessments', 'quizzs', media: 'all'
     = javascript_include_tag 'application'
