@@ -93,3 +93,6 @@ en:
       no_location: 'Unknown'
     chart:
       title: 'Quizzes( total #%{number} )'
+    graph:
+      title: 'Quizz Report'
+      y_title: '# of Quizzes'

@@ -1,4 +1,6 @@
-%div.chart{ :id => "container", :style => "width: 480px; height: 380px;"}
+%div.chart{ :id => "assessment_chart", :style => "width: 480px; height: 380px;"}
   %script
     = render 'assessment_chart.js', :data => @data, :chart_title => @chart_title
-
+%div.chart{ :id => "quizz_report", :style => "width: 480px; height: 380px;"}
+  %script
+    = render 'graph.js', :data => []
