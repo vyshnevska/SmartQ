@@ -1,6 +1,7 @@
 .infobox{:class => "infobox-#{box_type}"}
-  .infobox-icon
-    %i.ace-icon.fa.fa-comments
+  .infobox-progress
+    .easy-pie-chart.percentage{'data-percent' => "61", 'data-size' => "39", :style => "width: 39px; line-height: 38px;"}
+      %span.percent="6%"
   .infobox-data
     .infobox-data-number
       %span= "32"

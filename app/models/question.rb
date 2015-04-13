@@ -20,4 +20,20 @@ class Question < ActiveRecord::Base
   def correct_answer
     self.answers.select{|a| a.correct?}.map(&:id)
   end
+
+  def update_data(data = {})
+    self.title = data[:title]
+    update_answers(data)
+    self.save
+  end
+
+  def update_answers(data)
+    if data[:answers_attributes]
+      data[:answers_attributes].each do |answer_id, data|
+        a =  self.answers.find_or_create_by(:id => answer_id)
+        data[:correct] = "false" unless data.include?("correct")
+        a.update(data)
+      end
+    end
+  end
 end

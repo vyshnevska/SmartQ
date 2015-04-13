@@ -36,6 +36,7 @@ en:
       destroyed: 'Quizz %{quizz} was successfully destroyed'
       not_destroyed: "Quizz %{quizz} wasn't destroyed"
     categories:
+      updated: 'Category %{category} was successfully updated'
       destroyed: 'Category %{category} was successfully destroyed'
       not_destroyed: "Category %{category} wasn't destroyed"
   models:

@@ -30,10 +30,8 @@ class Admin::QuizzsController < AdminController
 
     if question_params[:questions]
       question_params[:questions].each do |question_id, data|
-        q =  @quizz.questions.find_or_create_by(:id => question_id)
-        q.title = data[:title]
-        update_answers(data, q)
-        @valid = q.save
+        question =  @quizz.questions.find_or_create_by(:id => question_id)
+        question.update_data(data)
       end
     end
 
@@ -73,16 +71,6 @@ class Admin::QuizzsController < AdminController
 
     def set_quizz
       @quizz = Quizz.includes(:questions => [:answers]).find(params[:id])
-    end
-
-    def update_answers(data, question)
-      if data[:answers_attributes]
-        data[:answers_attributes].each do |answer_id, data|
-          a =  question.answers.find_or_create_by(:id => answer_id)
-          data[:correct] = "false" unless data.include?("correct")
-          a.update(data)
-        end
-      end
     end
 
     def quizz_params

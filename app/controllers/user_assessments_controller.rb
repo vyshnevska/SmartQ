@@ -29,11 +29,6 @@ class UserAssessmentsController < ApplicationController
     respond_with(@user_assessment)
   end
 
-  # def destroy
-  #   @user_assessment.destroy
-  #   respond_with(@user_assessment)
-  # end
-
   private
     def set_quizzes
       @quizzes = Quizz.published.includes(:questions).paginate(:page => params[:page], :per_page => 5)
@@ -42,10 +37,6 @@ class UserAssessmentsController < ApplicationController
     def set_user_assessment
       @user_assessment = UserAssessment.find(params[:id])
     end
-
-    # def user_assessment_params
-    #   params.require(:user_assessment).permit(:user_id, :grade, :quizz, :current_question_id, :state)
-    # end
 
     def user_answers_params
       params.require(:user_answers)#.permit(:user_id, :grade, :quizz, :current_question_id, :state)
@@ -67,6 +58,6 @@ class UserAssessmentsController < ApplicationController
     end
 
     def build_report_graph_data
-      data = User.all.inject([]){ |arr, user| arr << {name: user.name, data: user.statistic_by_month.values || [0]}; arr }
+      data = User.all.inject([]){ |arr, user| arr << {name: user.name, data: user.statistic_by_period.values || [0]}; arr }
     end
 end

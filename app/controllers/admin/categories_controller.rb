@@ -9,20 +9,19 @@ class  Admin::CategoriesController < AdminController
 
   def new
     @category = Category.create
-    flash.now[:error] = @category.errors.full_messages.join(',') if @invalid = @category.errors.any?
+    flash.now[:error] = @category.errors.full_messages.join(',') unless @valid = @category.persisted?
   end
 
   def update
-    if @category.respond_to?(category_params[:field])
-      @valid = @category.update_attributes(category_params[:field] => category_params[:value])
-      flash.now[:error] = @category.errors.full_messages.join(',') unless @valid
+    if @category.update_attributes(category_params[:field] => category_params[:value])
+      flash.now[:notice] = I18n.t('controllers.categories.updated', :category => @category.id)
     else
-      flash.now[:error] = I18n.t('models.categories.unknown_column')
+      flash.now[:error] = @category.errors.full_messages.join(',')
     end
   end
 
   def destroy
-    redirect_to admin_categories_path, @category.destroy ? { notice: I18n.t('controllers.categories.destroyed', :category => @category.id) } : { error: I18n.t('controllers.categories.not_destroyed', :category => @category.id) }
+    redirect_to admin_categories_path, :notice => I18n.t('controllers.categories.destroyed', :category => @category.id) if @category.destroy
   end
 
   private

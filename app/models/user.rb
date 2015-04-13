@@ -34,11 +34,15 @@ class User < ActiveRecord::Base
     false
   end
 
-  def statistic_by_month
-    result = self.user_assessments.order('created_at').group('MONTH(created_at)').count
+  def statistic_by_period
+    result = quizzes_by_monthes_count
     MonthRange.new(START_PERIOD..END_PERIOD).each_month do |month|
       result.merge!(month => 0) unless result.keys.include?(month)
     end
-    result.sort_by{|k,v| k}.to_h
+    result.sort_by{|user,count| user}.to_h
+  end
+
+  def quizzes_by_monthes_count
+    self.user_assessments.order('created_at').group('MONTH(created_at)').count
   end
 end

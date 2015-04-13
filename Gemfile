@@ -56,4 +56,5 @@ group :test do
   # coverege
   gem 'metric_fu'
   gem 'rails_best_practices'
+  gem 'reek'
 end

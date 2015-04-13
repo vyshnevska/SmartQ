@@ -338,6 +338,7 @@ DEPENDENCIES
   rails (= 4.1.4)
   rails_12factor
   rails_best_practices
+  reek
   rspec-collection_matchers
   rspec-rails
   sass-rails (>= 3.2)
