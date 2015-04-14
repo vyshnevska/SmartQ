@@ -22,18 +22,15 @@ class Question < ActiveRecord::Base
   end
 
   def update_data(data = {})
-    self.title = data[:title]
-    update_answers(data)
-    self.save
+    self.update_attributes(:title => data[:title])
+    update_answers(data) if data[:answers_attributes]
   end
 
   def update_answers(data)
-    if data[:answers_attributes]
-      data[:answers_attributes].each do |answer_id, data|
-        a =  self.answers.find_or_create_by(:id => answer_id)
-        data[:correct] = "false" unless data.include?("correct")
-        a.update(data)
-      end
+    data[:answers_attributes].each do |answer_id, data|
+      answer = self.answers.find(answer_id)
+      answer.mark_incorrect unless data.include?("correct")
+      answer.update(data)
     end
   end
 end
