@@ -305,8 +305,8 @@
 
 .infobox {
   display: inline-block;
-  width: 210px;
-  height: 66px;
+  width: 215px;
+  height: 70px;
   color: #555;
   background-color: #FFF;
   box-shadow: none;
@@ -657,14 +657,14 @@
   padding-top: 0;
   display: inline-block;
   vertical-align: top;
-  width: 44px;
+  width: 60px;
 }
 
 .infobox>.infobox-chart {
   padding-top: 0;
   display: inline-block;
   vertical-align: text-bottom;
-  width: 44px;
+  width: 60px;
   text-align: center;
 }
 
@@ -709,6 +709,25 @@
   border: 12px solid transparent;
   border-width: 8px 7px;
   border-bottom-color: #ABBAC3;
+}
+
+.infobox-green>.static.box-title {
+  color: #9abc32;
+}
+.infobox-red>.static.box-title {
+  color: #d53f40;
+}
+.infobox-blue2>.static.box-title {
+  color: #3983c2;
+}
+.infobox-orange2>.static.box-title {
+  color: #f79263;
+}
+.infobox-blue>.static.box-title {
+  color: #6fb3e0;
+}
+.infobox-pink>.static.box-title {
+  color: #cb6fd7;
 }
 
 .infobox>.stat.stat-success {

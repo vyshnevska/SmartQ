@@ -1,9 +1,9 @@
 .infobox{:class => "infobox-#{box_type}"}
   .infobox-progress
-    .easy-pie-chart.percentage{'data-percent' => "61", 'data-size' => "39", :style => "width: 39px; line-height: 38px;"}
-      %span.percent="6%"
+    .easy-pie-chart.percentage{'data-percent' => box[:percent], 'data-size' => "55", :style => "width: 55px; line-height: 54px;"}
+      %span.percent= "#{box[:percent]}%"
   .infobox-data
-    .infobox-data-number
-      %span= "32"
-    .infobox-content="comments + 2 reviews"
-  .stat.stat-success= "8%"
+    .centered.infobox-data-number
+      %span= box[:data]
+    .infobox-content= build_box_content(box)
+  .static.box-title= format_string_by_count(box[:name], box[:data])

@@ -21,12 +21,16 @@
 #quizz_statistics
   .row
     .space-6
+    .col-sm-7.infobox-top-container
+      .infobox-header
+        .title= current_user.name.capitalize
+  .row
     .col-sm-7.infobox-container
-      - %w(green blue pink red orange2 blue2).each do |box_type|
-        = render 'infobox_container', :box_type => box_type
-      .space-6
-      - %w(green blue grey).each do |sm_box_type|
-        = render 'sm_infobox_container', :box_type => sm_box_type
-
+      - @box_data.each do |box|
+        = render 'infobox_container', :box_type => random_box_type, :box => box
+      / .space-6
+      / - .each do |sm_box_data|
+      /   = render 'sm_infobox_container', :box_type => random_sm_box_type
+  .row
     .space-6
     = render 'statistics'

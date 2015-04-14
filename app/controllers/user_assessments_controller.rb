@@ -7,6 +7,10 @@ class UserAssessmentsController < ApplicationController
   def summary_report
     @data, @chart_title = build_chart_data
     @report_data = build_report_graph_data
+    @box_data = [
+                  {:name => I18n.t('controllers.user_assessments.summary_report.category'), :data => current_user.count_category, :percent => current_user.summary_by_category, :total => Category.filled.count},
+                  {:name => I18n.t('controllers.user_assessments.summary_report.attempt'), :data => current_user.count_attempts, :percent => current_user.summary_by_quizz, :total => Quizz.published.count}
+                ]
   end
 
   def show

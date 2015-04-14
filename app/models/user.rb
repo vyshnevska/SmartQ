@@ -45,4 +45,24 @@ class User < ActiveRecord::Base
   def quizzes_by_monthes_count
     self.user_assessments.order('created_at').group('MONTH(created_at)').count
   end
+
+  def count_category
+    self.user_assessments.map{|ua| ua.quizz.try(:category_id)}.uniq.count
+  end
+
+  def count_quizzes
+    self.user_assessments.map{|ua| ua.quizz}.uniq.count
+  end
+
+  def count_attempts
+    self.user_assessments.map{|ua| ua.quizz}.count
+  end
+
+  def summary_by_quizz
+    (100 * count_quizzes / Quizz.published.count.to_f).round()
+  end
+
+  def summary_by_category
+    (100 * count_category / Category.filled.count.to_f).round()
+  end
 end
