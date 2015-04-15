@@ -39,11 +39,16 @@ class User < ActiveRecord::Base
     MonthRange.new(START_PERIOD..END_PERIOD).each_month do |month|
       result.merge!(month => 0) unless result.keys.include?(month)
     end
-    result.sort_by{|user,count| user}.to_h
+
+    Rails.env.development? ? result.sort_by{|user,count| user}.to_h : result.to_h
   end
 
   def quizzes_by_monthes_count
-    self.user_assessments.order('created_at').group('MONTH(created_at)').count
+    if Rails.env.production?
+      self.user_assessments.group("date_trunc('month', created_at)").count
+    else
+      self.user_assessments.order('created_at').group('MONTH(created_at)').count
+    end
   end
 
   def count_category
