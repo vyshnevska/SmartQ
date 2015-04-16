@@ -1,11 +1,16 @@
 class UserAssessmentsController < ApplicationController
-  before_action :set_user_assessment, only: [:show]
+  before_action :set_user_assessment, only: [:show, :update]
   before_action :set_quizzes, only: [:index, :summary_report]
   respond_to :html
 
 
   def summary_report
     @data, @chart_title = build_chart_data
+    @report_data = build_report_graph_data
+    @box_data = [
+                  {:name => I18n.t('controllers.user_assessments.summary_report.category'), :data => current_user.count_category, :percent => current_user.summary_by_category, :total => Category.filled.count},
+                  {:name => I18n.t('controllers.user_assessments.summary_report.attempt'), :data => current_user.count_attempts, :percent => current_user.summary_by_quizz, :total => Quizz.published.count}
+                ]
   end
 
   def show
@@ -25,13 +30,8 @@ class UserAssessmentsController < ApplicationController
   def update
     @user_assessment.finish!
     @user_assessment.update(:user_answers => user_answers_params.to_h)
-    respond_with(@user_assessment)
+    redirect_to user_assessments_path
   end
-
-  # def destroy
-  #   @user_assessment.destroy
-  #   respond_with(@user_assessment)
-  # end
 
   private
     def set_quizzes
@@ -41,10 +41,6 @@ class UserAssessmentsController < ApplicationController
     def set_user_assessment
       @user_assessment = UserAssessment.find(params[:id])
     end
-
-    # def user_assessment_params
-    #   params.require(:user_assessment).permit(:user_id, :grade, :quizz, :current_question_id, :state)
-    # end
 
     def user_answers_params
       params.require(:user_answers)#.permit(:user_id, :grade, :quizz, :current_question_id, :state)
@@ -63,5 +59,9 @@ class UserAssessmentsController < ApplicationController
               ['Can complete', ready_quizzes]
       ]
       return data, I18n.t('views.chart.title', :number => total_quizzes.count)
+    end
+
+    def build_report_graph_data
+      data = User.all.inject([]){ |arr, user| arr << {name: user.name, data: user.statistic_by_period.values || [0]}; arr }
     end
 end

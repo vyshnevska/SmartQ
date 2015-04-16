@@ -19,6 +19,7 @@ gem 'nested_form'
 
 gem 'haml-rails'
 gem 'haml'
+gem "highcharts-rails", "~> 3.0.0"
 
 group :assets do
   gem 'uglifier'
@@ -55,4 +56,5 @@ group :test do
   # coverege
   gem 'metric_fu'
   gem 'rails_best_practices'
+  gem 'reek'
 end

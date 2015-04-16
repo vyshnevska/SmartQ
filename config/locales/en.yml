@@ -36,8 +36,13 @@ en:
       destroyed: 'Quizz %{quizz} was successfully destroyed'
       not_destroyed: "Quizz %{quizz} wasn't destroyed"
     categories:
+      updated: 'Category %{category} was successfully updated'
       destroyed: 'Category %{category} was successfully destroyed'
       not_destroyed: "Category %{category} wasn't destroyed"
+    user_assessments:
+      summary_report:
+        category: 'Category'
+        attempt: 'Attempt'
   models:
     categories:
       one_blank_category: 'You can not create new category if you have another unfilled one'
@@ -93,3 +98,6 @@ en:
       no_location: 'Unknown'
     chart:
       title: 'Quizzes( total #%{number} )'
+    graph:
+      title: 'Quizz Report'
+      y_title: '# of Quizzes'

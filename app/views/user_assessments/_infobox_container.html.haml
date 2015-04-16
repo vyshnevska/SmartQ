@@ -1,0 +1,9 @@
+.infobox{:class => "infobox-#{box_type}"}
+  .infobox-progress
+    .easy-pie-chart.percentage{'data-percent' => box[:percent], 'data-size' => "55", :style => "width: 55px; line-height: 54px;"}
+      %span.percent= "#{box[:percent]}%"
+  .infobox-data
+    .centered.infobox-data-number
+      %span= box[:data]
+    .infobox-content= build_box_content(box)
+  .static.box-title= format_string_by_count(box[:name], box[:data])

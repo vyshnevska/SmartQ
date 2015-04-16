@@ -1,0 +1,29 @@
+$('#quizz_report').highcharts({
+  chart: {
+    type: 'line'
+  },
+  title: {
+    text: "<%= I18n.t('views.graph.title') %>" 
+  },
+  credits: {
+    enabled: false
+  },
+  xAxis: {
+    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  },
+  yAxis: {
+    title: {
+      text: "<%= I18n.t('views.graph.y_title') %>"
+    }
+  },
+  plotOptions: {
+    line: {
+      dataLabels: {
+          enabled: true
+      },
+      enableMouseTracking: false
+    }
+  },
+  series: <%= report_data.to_json.html_safe %>
+});
+
