@@ -1,5 +1,5 @@
 class UserAssessmentsController < ApplicationController
-  before_action :set_user_assessment, only: [:show]
+  before_action :set_user_assessment, only: [:show, :update]
   before_action :set_quizzes, only: [:index, :summary_report]
   respond_to :html
 
@@ -30,7 +30,7 @@ class UserAssessmentsController < ApplicationController
   def update
     @user_assessment.finish!
     @user_assessment.update(:user_answers => user_answers_params.to_h)
-    respond_with(@user_assessment)
+    redirect_to user_assessments_path
   end
 
   private
